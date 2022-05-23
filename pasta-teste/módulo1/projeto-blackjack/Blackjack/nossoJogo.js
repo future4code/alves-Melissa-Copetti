@@ -12,25 +12,21 @@
  */
 console.log("Boas vindas ao jogo de Blackjack!")
 
-if(confirm("Quer iniciar uma nova rodada?")) {
-	// o que fazer se o usuário clicar "ok"
+if (confirm("Quer iniciar uma nova rodada?")) {
+
+   const carta = comprarCarta();
+   let resultado1 = (console.log(`Usuario - ${carta.texto}  ${carta.texto} - pontuação ${carta.valor + carta.valor}`))
+   let resultado2 = (console.log(`Computador - ${carta.texto}  ${carta.texto} - pontuação ${carta.valor + carta.valor}`))
+
+   if (resultado1 === resultado2) {
+      console.log("Empate!");
+   } else if (resultado1 > resultado2) {
+      console.log("o usuário ganhou!");
+   } else if (resultado1 < resultado2) {
+      console.log("o computador ganhou!");
+   }
+
 } else {
-	console.log("O jogo acabou!")
+   console.log("O jogo acabou!")
+
 }
-let A = 11
-let J = 10
-let Q = 10
-let K = 10
-const cartas = [
- {numero:A, naipe: "♥️"}, {numero:2, naipe: "♥️"}, {numero:3, naipe: "♥️"}, {numero:4, naipe: "♥️"}, {numero:5, naipe: "♥️"}, {numero:7, naipe: "♥️"}, {numero:7, naipe: "♥️"}, {numero:8, naipe: "♥️"}, {numero:9, naipe: "♥️"}, {numero:10, naipe: "♥️"}, {numero:J, naipe: "♥️"}, {numero:Q, naipe: "♥️"}, {numero:K, naipe: "♥️"}, {numero:A, naipe: "♣️"}, {numero:2, naipe: "♣️"}, {numero:3, naipe: "♣️"}, {numero:4, naipe: "♣️"}, {numero:5, naipe: "♣️"}, {numero:7, naipe: "♣️"}, {numero:7, naipe: "♣️"}, {numero:8, naipe: "♣️"}, {numero:9, naipe: "♣️"}, {numero:10, naipe: "♣️"}, {numero:J, naipe: "♣️"}, {numero:Q, naipe: "♣️"}, {numero:K, naipe: "♣️"},{numero:A, naipe: "♦️"}, {numero:2, naipe: "♦️"}, {numero:3, naipe: "♦️"}, {numero:4, naipe: "♦️"}, {numero:5, naipe: "♦️"}, {numero:7, naipe: "♦️"}, {numero:7, naipe: "♦️"}, {numero:8, naipe: "♦️"}, {numero:9, naipe: "♦️"}, {numero:10, naipe: "♦️"}, {numero:J, naipe: "♦️"}, {numero:Q, naipe: "♦️"}, {numero:K, naipe: "♦️"}, {numero:A, naipe: "♠️"}, {numero:2, naipe: "♠️"}, {numero:3, naipe: "♠️"}, {numero:4, naipe: "♠️"}, {numero:5, naipe: "♠️"}, {numero:7, naipe: "♠️"}, {numero:7, naipe: "♠️"}, {numero:8, naipe: "♠️"}, {numero:9, naipe: "♠️"}, {numero:10, naipe: "♠️"}, {numero:J, naipe: "♠️"}, {numero:Q, naipe: "♠️"}, {numero:K, naipe: "♠️"}]
-
-
-
- const carta = comprarCarta((cartas)=>{
-let cartaComprada = cartas.numero.floor(cartas.random());
-let naipeDaCarta = cartas.naipe.floor(cartas.random());
-let compraJogo = (cartaComprada,naipeDaCarta)
-let jogoFeito = (compraJogo + compraJogo)
-return jogoFeito
- })
- console.log(carta)
