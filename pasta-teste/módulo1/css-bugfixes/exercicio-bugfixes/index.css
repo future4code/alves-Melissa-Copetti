@@ -17,6 +17,10 @@ h2 {
 }
 
 input {
+    border-width: 5px;
+    border-top: none;
+    border-left:none;
+    border-right: none;
     height: 20px;
     width: 500px;
 }
