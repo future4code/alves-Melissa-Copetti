@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px 0px 16px;
+    background-color: mediumvioletred;
+    flex-direction: row;
+}
+
+.cabecalho {
+
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.cabecalho img {
+    width: 20px;
+}
+
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+main {
+    width: 100px;
+    display: flex;
+
+}
+
+
+
+
+.barra-aside {
+    padding-right: 10%;
+    position: absolute;
+    display: flex;
+    background-color: #f2d0e0;
+}
+
+li {
+    margin-left: 0;
+    padding-left: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.barra-aside img h3 {
+    flex-direction: row;
+}
+
+.barra-aside img {
+    width: 15px;
+    border: none;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section img {
+    width: 200px;
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid black;
+
+}
+
+h2,
+p {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.imagem-bolo {
+    border: 1px black;
+    padding: 0px;
+    border: 2px;
+    box-shadow: 2px 2px 2px 2px gray;
+    margin: 10px;
+    display: table-column;
+    flex-wrap: wrap;
+
+}
+
+footer {
+    margin-bottom: 0%;
+    text-align: center;
+    padding: 3px;
+    background-color: mediumvioletred;
+}
