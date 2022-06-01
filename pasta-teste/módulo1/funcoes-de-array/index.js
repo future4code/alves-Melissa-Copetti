@@ -15,7 +15,7 @@
 //   })
 
 //a) O que vai ser impresso no console?
-// será impresso:
+// será impresso
 // object 1 
 //nome: Amanda Rangel
 // apelido: Mandi
@@ -108,7 +108,7 @@ let pets = [
 ]
 
 
-const cachorrinhos = pets.filter((dog, indice, array) => {
+let cachorrinhos = pets.filter((dog, indice, array) => {
     return dog.nome
 }).map((dog) => {
     return dog.nome
