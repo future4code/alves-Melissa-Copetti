@@ -13,7 +13,7 @@ header {
     display: flex;
     font-size: medium;
     grid-template-columns: repeat(1fr);
-    color: aliceblue;
+    color:black;
     font-family: 'Times New Roman', Times, serif;
     background-color: orange;
     align-items: center;
@@ -35,6 +35,7 @@ footer {
     color: rgb(2, 11, 19);
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    position: fixed;
 }
 
 main {
@@ -69,3 +70,24 @@ section {
     margin-bottom: 10px;
     text-align: center;
 }
+
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+} 
+.video {
+    align-items: unset;
+    width: 100%;
+    height: 300px;
+}
+header input {
+    width: 50px;
+}
+ }
+
+ header h1 {
+     font-size: medium;
+ }

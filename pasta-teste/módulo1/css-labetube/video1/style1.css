@@ -13,7 +13,7 @@ header {
     display: flex;
     font-size: medium;
     grid-template-columns: repeat(1fr);
-    color: aliceblue;
+    color: black;
     font-family: 'Times New Roman', Times, serif;
     background-color: orange;
     align-items: center;
@@ -32,7 +32,7 @@ div iframe {
 }
 
 footer {
-    margin-bottom: 0;
+    margin-bottom: 0px;
     padding-bottom: 20px;
     border: solid 1px black;
     background-color: silver;
@@ -40,4 +40,25 @@ footer {
     color: rgb(2, 11, 19);
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    align-items: baseline;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    } 
+    section {
+        width: 100%;
+        margin-left: 0%;
+    }
+    header input {
+        width: 50px;
+    }
+     }
+    
+     header h1 {
+         font-size: medium;
+        
+     }
