@@ -16,32 +16,28 @@ const InputComentario = styled.input`
 export class SecaoComentario extends React.Component {
 	state = {
 
-	valorImputComentario:""
+	Comentario:""
 
 	};
 
-	adicionaComentario = () => {
-
-		const novoComentário = this.state.valorImputComentario;
-	}
-	}
-this.setState({comentario:novoComentário});
-
 onChangeInputComentario = (event)=> {
-	this.setState({valorImputComentario:event.target.value});
+	this.setState({Comentario:event.target.value});
+	console.log(this.state.comentario)
 };
 
-render();{
+
+render() {
 	
 return(
-<div>
-	<><input
-		value={this.state.valorImputComentario}
-		onchange={this.onChangeInputComentario}
-		placeholder={"Comentário"} /><button onClick={this.adicionaComentario}>Enviar</button>
-		</>
-</div>
-);
+<CommentContainer>
+	<input
+		placeholder={'Comentário'}
+		tipe="text"
+		onChange={this.onChangeComentario}		
+/>
+<button onClick={this.props.aoEnviar}>Enviar</button>
+</CommentContainer>
+)}
 }
 
-export default SecaoComentario;
+export default SecaoComentario
