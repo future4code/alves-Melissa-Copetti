@@ -9,7 +9,7 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem="./foto.png" 
+          imagem="foto.png" 
           nome="Melissa Fernanda" 
           descricao="Oi, eu sou a Melissa. Sou aluna da Labenu. Adoro fazer edições de fotos e aplicá-las a documentos html."
         />

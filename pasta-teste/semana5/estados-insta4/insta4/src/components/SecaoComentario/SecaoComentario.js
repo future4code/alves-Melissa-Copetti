@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React, {Component} from 'react'
 import styled from 'styled-components'
 
@@ -12,23 +13,35 @@ const InputComentario = styled.input`
     margin-right: 5px;
 `
 
-export class SecaoComentario extends Component {
+export class SecaoComentario extends React.Component {
 	state = {
 
-	}
+	valorImputComentario:""
 
-	onChangeComentario() {
+	};
 
-	}
+	adicionaComentario = () => {
 
-	render() {
-		return <CommentContainer>
-			<InputComentario
-				placeholder={'Comentário'}
-				value={''}
-				onChange={this.onChangeComentario}
-			/>
-			<button onClick={this.props.aoEnviar}>Enviar</button>
-		</CommentContainer>
+		const novoComentário = this.state.valorImputComentario;
 	}
+	}
+this.setState({comentario:novoComentário});
+
+onChangeInputComentario = (event)=> {
+	this.setState({valorImputComentario:event.target.value});
+};
+
+render();{
+	
+return(
+<div>
+	<><input
+		value={this.state.valorImputComentario}
+		onchange={this.onChangeInputComentario}
+		placeholder={"Comentário"} /><button onClick={this.adicionaComentario}>Enviar</button>
+		</>
+</div>
+);
 }
+
+export default SecaoComentario;

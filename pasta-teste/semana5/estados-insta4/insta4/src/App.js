@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Post from './components/Post/Post';
+import SecaoComentario from './components/SecaoComentario/SecaoComentario';
 
 const MainContainer = styled.div`
   display: flex;
@@ -17,6 +18,7 @@ class App extends React.Component {
           nomeUsuario={'paulinha'}
           fotoUsuario={'https://picsum.photos/50/50'}
           fotoPost={'https://picsum.photos/200/150'}
+          novoComentario={SecaoComentario}
         />
       </MainContainer>
     );
