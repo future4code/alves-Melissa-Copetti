@@ -1,55 +1,69 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
+// import styled from "styled-components";
 
-const CardUsuario = styled.div`
-border:1px solid black;
-padding: 10px;
-margin:10px;
-width:300px;
-background-color: blueviolet;
-display:flex;
-justify-content: space-evenly;
-font-size:large;
-`
+
 
 export default class App extends React.Component {
     state = {
-       nome:""
+        nome: ""
     }
     componentDidMount() {
         this.escolherPlaylist()
     }
 
 
-    fazerCadastro = () => {
-      const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
-      const body = {
-          name: this.state.nome,
-          
-          axios.post(url,body, {
+    escolherPlaylist = () => {
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlist"
+        const body = {
+            name: this.state.nome,
+        }
+        axios.post(url, body, {
             headers: {
-                Authorization:"melissa-copetti-alves"
+                Authorization: "melissa-copetti-alves"
             }
-        }).then((resposta)=>{
-    this.setState({nome:""})
+        }).then((resposta) => {
+            console.log("playlist criada:", resposta)
+            this.setState({ nome: "" })
         })
-        .catch((error)=>{
-    alert(error.response.data.message)
-        })
-    
+            .catch((error) => {
+                console.log(error)
+                alert(error.response.data.message)
+            })
+
     }
 
+    mostrarTodasPlaylists = () => {
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
 
+        axios.gel(url, {
+            headers: {
+                Authorization: "melissa-copetti-alves"
+            }
+        }).then((resposta) => {
+            this.setState({ playlists: resposta.data.result.list })
+        })
+            .catch((error) => {
+                console.log(error.data)
+                alert(error.response.data.message)
+            })
+
+    }
 
     render() {
-            
-
-
+        const listaDePlaylists = () => {
+            return this.state.playlists.map((playlist) => {
+                <p key={playlist.id}>{playlist.name}</p>
+            })
+        }
+        return (
             <div>
-               
-                
+                <h1>Lista de Playlists</h1>
+                <input onChange={this.onChangeNamePlaylist}
+                    placeholder="nome da Playlist" />
+                <button onClick={this.escolherPlaylist}
+                    type='submit'>Criar Playlist</button>
             </div>
-        
+        )
     }
-  }}
+}
