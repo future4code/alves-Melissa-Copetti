@@ -1,69 +1,58 @@
-import React from "react";
-import axios from "axios";
-// import styled from "styled-components";
+import React from 'react';
+import TelaCadastro from './Components/CadastroPlaylists';
+import TelaListaPlaylists from './Components/ListaDePlaylists';
+import TelaMusicas from './Components/TelaMusicas';
+import styled from 'styled-components';
+
+const PaginaTotal = styled.div`
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,66,121,1) 35%, rgba(0,212,255,1) 100%);
 
 
+`
+
+ 
 
 export default class App extends React.Component {
-    state = {
-        nome: ""
+  state = {
+    telaAtual: "criar nova Playlist"
+  }
+
+  escolheTela = () => {
+    switch (this.state.telaAtual) {
+      case "criar nova Playlist":
+        return <TelaCadastro irParaLista={this.irParaLista} />
+      case "lista de playlists":
+        return <TelaListaPlaylists irParaCadastro={this.irParaCadastro} />
+        
+      default:
+        return <div>Erro! Página não encontrada</div>
     }
-    componentDidMount() {
-        this.escolherPlaylist()
-    }
+  }
+
+irParaCadastro = ()=>{
+this.setState({telaAtual:"criar nova Playlist"})
+}
+
+irParaLista =()=>{
+this.setState({telaAtual:"lista de playlists"})
+}
+
+inserirMusica =()=>{
+  this.setState({telaAtual:"inserir nova música"})
+}
 
 
-    escolherPlaylist = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlist"
-        const body = {
-            name: this.state.nome,
-        }
-        axios.post(url, body, {
-            headers: {
-                Authorization: "melissa-copetti-alves"
-            }
-        }).then((resposta) => {
-            console.log("playlist criada:", resposta)
-            this.setState({ nome: "" })
-        })
-            .catch((error) => {
-                console.log(error)
-                alert(error.response.data.message)
-            })
-
-    }
-
-    mostrarTodasPlaylists = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
-
-        axios.gel(url, {
-            headers: {
-                Authorization: "melissa-copetti-alves"
-            }
-        }).then((resposta) => {
-            this.setState({ playlists: resposta.data.result.list })
-        })
-            .catch((error) => {
-                console.log(error.data)
-                alert(error.response.data.message)
-            })
-
-    }
-
-    render() {
-        const listaDePlaylists = () => {
-            return this.state.playlists.map((playlist) => {
-                <p key={playlist.id}>{playlist.name}</p>
-            })
-        }
-        return (
-            <div>
-                <h1>Lista de Playlists</h1>
-                <input onChange={this.onChangeNamePlaylist}
-                    placeholder="nome da Playlist" />
-                <button onClick={this.escolherPlaylist}
-                    type='submit'>Criar Playlist</button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <PaginaTotal>
+{this.escolheTela()}
+</PaginaTotal>
+      </div>
+    );
+  }
 }
