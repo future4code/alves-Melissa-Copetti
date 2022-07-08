@@ -3,27 +3,37 @@ import { useState } from 'react';
 import TelaMatchs from './Components/TelaMatchs';
 import TelaPerfis from './Components/TelaPerfis';
 
-function App(props) {
+function App() {
 
-  const [outraTela, setOutraTela] = useState ("tela Perfis")
+const [telaPerfis, setTelaPerfis] = useState("Tela Perfis")
+const [telaMatchs, setTelaMatchs] = useState("tela Matchs")
+
+
 
   const trocaTela = () => {
-   if (outraTela === "tela Matchs"){
-setOutraTela("TelaMatchs")
-  }else{
-    setOutraTela("TelaPerfis")
+   switch(telaPerfis){
+case 'Tela Perfis':
+   return(
+    <TelaPerfis
+    setTelaPerfis={setTelaPerfis}/>
+   )
+   case(telaMatchs):
+   return(
+    <TelaMatchs
+      setTelaMatchs={setTelaMatchs}/>
+   )
+   default:
+    <div>Página não encontrada!</div>
+   }
   }
-};
-
   
 
   return (
     <div>
-   <header>
-   <h1>astromatch</h1>
-        <button onClick={trocaTela}>Matchs</button>
-   </header>
-      {props.TelaPerfis}
+      <container>
+   
+      </container>
+    {trocaTela()}
        
     </div>
   );

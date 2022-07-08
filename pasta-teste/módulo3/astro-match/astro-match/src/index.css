@@ -13,19 +13,27 @@ body {
  display: flex;
  justify-content: center;
 align-items:center;
+
 }
 
 header{
-  margin-top: 100px;
   font-family: 'Fredoka One', cursive;
    color: rgba(82,194,200,1);
+   display: flex;
+   justify-content:space-between;
+align-items:flex-start;
 }
+
+
+
 
 p{
   color:black;
 }
 
-
+footer{
+  margin-top:0;
+}
 
 
 

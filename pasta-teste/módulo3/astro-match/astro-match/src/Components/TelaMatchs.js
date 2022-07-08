@@ -16,7 +16,7 @@ function TelaMatchs(props) {
     axios
       .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/copetti/matches").then(
         (resposta) => {
-          setProfile(resposta.data)
+          setMatchesList(resposta.data)
           console.log(resposta.data)
         }
       ).catch((erro) => {
@@ -27,6 +27,7 @@ function TelaMatchs(props) {
 
   return (
     <main>
+      <h1>astromatch</h1>
       <button onClick={props.TelaPerfis}>Ver Perfis</button>
     {matchesList}
     </main>
