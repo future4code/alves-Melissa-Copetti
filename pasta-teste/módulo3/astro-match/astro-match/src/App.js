@@ -10,6 +10,10 @@ const [telaMatchs, setTelaMatchs] = useState("tela Matchs")
 
 
 
+
+
+
+
   const trocaTela = () => {
    switch(telaPerfis){
 case 'Tela Perfis':
@@ -30,9 +34,7 @@ case 'Tela Perfis':
 
   return (
     <div>
-      <container>
-   
-      </container>
+     
     {trocaTela()}
        
     </div>
