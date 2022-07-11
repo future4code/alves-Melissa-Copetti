@@ -5,6 +5,7 @@ import Dislike from "./imagens/Deslike.png";
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
 import LimparMatchs from './LimparMatchs';
+import { Container } from '@mui/system';
 
 
 
@@ -127,11 +128,12 @@ function TelaPerfis(props) {
     return (
         <div>
             
-                
+                <section>
                 <QuadroImg>
                 <ImgFundo src={profile.photo}></ImgFundo>
                 <ImgCard src={profile.photo}></ImgCard>
                 </QuadroImg>
+                </section>
                 <br />
                 <NameAge>
                 <p><strong>{profile.name},</strong>&nbsp;&nbsp;</p>
