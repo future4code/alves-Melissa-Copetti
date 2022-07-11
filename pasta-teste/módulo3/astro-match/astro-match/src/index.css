@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima&family=Fredoka+One&display=swap');
 
 *{
   margin: 0;
@@ -7,33 +7,31 @@
 }
 
 
-
-
 body {
   margin: 0;
  display: flex;
  justify-content: center;
 align-items:center;
-background-color:antiquewhite;
+background-color:#e4cab1;
 }
 
-header{
-  
-   display: flex;
-   justify-content:space-between;
-align-items:flex-start;
-}
 
 h1{
   font-size: 30px;
   font-family: 'Fredoka One', cursive;
- color: rgba(82,194,200,1);
+ color: rgb(209, 10, 10);
 }
 
+button{
+  background-color: transparent;
+  border: none;
+}
 
 
 p{
   color:black;
+  font-family: 'Arima', cursive;
+font-size: large;
 }
 
 footer{

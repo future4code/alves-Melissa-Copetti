@@ -1,51 +1,76 @@
 import React from 'react';
 import axios from "axios";
 import Like from "./imagens/Like.png";
-import Dislike from "./imagens/Dislike.png";
+import Dislike from "./imagens/Deslike.png";
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
 import LimparMatchs from './LimparMatchs';
 
 
 
-const MainCard = styled.div`
-margin-top:50px;
-border: 1px black;
-width:347px;
-height: 600px;
-padding:5px;
-border-radius:20px;
-box-shadow: 10px 10px 10px 10px #696969;
-flex-wrap: wrap;
-  background: #ffff;
-  display:flex;
-  justify-content:center;
-`
+
 
 const ImgCard = styled.img`
-width:95%;
-height: 25rem;
-object-fit:cover;
-box-shadow: #696969 0px 10px 20px;
-margin:5px;
-border-radius:20px;
+
+object-fit:cover contain;
+max-width: 100%;
+max-height: 100%;
+z-index:1;
 `
+
+
+const QuadroImg = styled.div`
+/* width: 20vw; */
+    height: 20vw;
+    border-radius:20px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    justify-self: center;
+    box-shadow: #696969 0px 10px 20px;
+
+
+`
+
+const ImgFundo = styled.img`
+position: absolute;
+    height: 100%;
+    width: 100%;
+    filter: blur(10px);
+    `
+
+
+
 const ButtonsCard = styled.button`
 width:50px;
 cursor:pointer;
 border-radius:45%;
 border:none;
+box-shadow: #696969 0px 1px 2px;
 
 `
 const ButtonImg = styled.img`
 width:70%;
+
 `
 
 const ButtonBox = styled.div`
 display:flex;
-justify-content:space-between;
-align-self:flex-end;
+justify-content:space-evenly;
+align-self:center;
 
+
+`
+const NameAge = styled.div`
+font-size: 25px;
+margin-bottom: 10px;
+font-weight: normal;
+display:flex;
+align-self:center;
 
 `
 
@@ -58,7 +83,7 @@ function TelaPerfis(props) {
 
     const getProfile = () => {
         axios
-            .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:copetti/person").then(
+            .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/copetti/person").then(
                 (resposta) => {
                     setProfile(resposta.data.profile)
                     console.log(resposta.data)
@@ -80,15 +105,15 @@ function TelaPerfis(props) {
             choice: true
         }
         axios
-            .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:copetti/choose-person", body).then((resposta) => {
+            .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/copetti/choose-person", body).then((resposta) => {
                 if (resposta.data.isMatch) {
-                    alert('Deu match')
-                    
+                    alert('Deu match!<3')
                     console.log(resposta.data)
                 } else {
                     alert('não foi dessa vez :(')
                 }
-                 setProfile() 
+                setProfile(true)
+                getProfile()
 
             })
 
@@ -99,34 +124,28 @@ function TelaPerfis(props) {
     }
 
 
-
-    const changeProfile = (event) => {
-        setProfile(event.target.value)
-    };
-
     return (
         <div>
-            <MainCard>
-                <header>
-                    <h1>astromatch</h1>
-                    <button onClick={props.TrocaTela}>Matchs</button>
-                    <hr />
-                </header>
+            
+                
+                <QuadroImg>
+                <ImgFundo src={profile.photo}></ImgFundo>
                 <ImgCard src={profile.photo}></ImgCard>
+                </QuadroImg>
                 <br />
+                <NameAge>
                 <p><strong>{profile.name},</strong>&nbsp;&nbsp;</p>
-                <br />
                 <p>{profile.age}</p>
-                <br />
+                </NameAge>
                 <p>{profile.bio}</p>
                 <br />
 
 
                 <ButtonBox>
-                    <ButtonsCard onClick={changeProfile}><ButtonImg src={Dislike} /></ButtonsCard>
-                    <ButtonsCard onClick={postMatchs}><ButtonImg src={Like} /></ButtonsCard>
+                    <ButtonsCard onClick={getProfile}><ButtonImg src={Dislike} /></ButtonsCard>
+                    <ButtonsCard onClick={() => postMatchs(true)}><ButtonImg src={Like} /></ButtonsCard>
                 </ButtonBox>
-            </MainCard>
+           
             <footer>
                 {LimparMatchs}
             </footer>
