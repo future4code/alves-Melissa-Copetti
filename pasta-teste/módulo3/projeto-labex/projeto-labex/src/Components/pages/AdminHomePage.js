@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { goToHomePage, goToCriateTripPage } from './Routes/Coordinator';
+import { goToHomePage, goToCriateTripPage, goToLogin } from './Routes/Coordinator';
+import {useEffect} from 'react';
+
+const useProtectedPage = () => {
+  const navigate = useNavigate ();
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
+    if(token === null) {
+      console.log("Não está logado!");
+      navigate.push(goToLogin);
+    }
+  },);
+};
+
 
 export const AdminHomePage = () => {
   const navigate = useNavigate()
+  useProtectedPage();
+
+
 
 
 

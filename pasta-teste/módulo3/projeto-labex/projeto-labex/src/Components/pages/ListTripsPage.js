@@ -15,7 +15,7 @@ export const ListTripsPage = () => {
     const link = ('https://us-central1-labenu-apis.cloudfunctions.net/labeX/copetti/trips');
     axios.get(link).then((res) => {
       setTrip(res.data);
-      console.log(res.data)
+      console.log(res.data.trips)
     })
       .catch((err) => {
         console.log(err.response);
@@ -31,6 +31,7 @@ export const ListTripsPage = () => {
   return (
     <div>
       <h1>Lista de Viagens</h1>
+      <p>{trip.name}</p>
       <button onClick={()=>goBack(navigate)}>Voltar</button>
       <button onClick={()=>goToApplicationFormPage(navigate)}>Inscrever-se</button>
 

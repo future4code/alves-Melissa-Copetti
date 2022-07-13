@@ -2,13 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { goToLogin, goToListTripPage } from './Routes/Coordinator';
 import styled from 'styled-components';
-import Disco from './Imagens/Disco.jpg'
+import Disco from './Imagens/Disco.jpg';
 
 
 const HomeBody = styled.body`
- width: 1900px;
-  max-width: 100%;
-  height:720px;
+max-width: 100%;
+max-height:100%;
+height:738px;
 background-image:url(${Disco});
 background-repeat:no-repeat;
 margin:0;
@@ -42,7 +42,6 @@ const ButtonStyled = styled.button`
 margin:10px;
 background-color:#043959;
 color:#c5d9ed;
-font-family: 'Chakra Petch', sans-serif;
 padding:10px;
 border-radius:10px;
 border: 3px solid #c5d9ed;
@@ -55,19 +54,19 @@ font-size:50px;
 `
 
 export const HomePage = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   return (
     <HomeBody>
-      <CardHome> 
-      <MainHome>  
-<Title>LabeX</Title>
-<br/>
-<ButtonStyled onClick={() => goToListTripPage(navigate)}>Viagens</ButtonStyled>
-<ButtonStyled onClick={() => goToLogin(navigate)}>Área do Administrador</ButtonStyled>
-</MainHome>
-</CardHome>
+      <CardHome>
+        <MainHome>
+          <Title>LabeX</Title>
+          <br />
+          <ButtonStyled onClick={() => goToListTripPage(navigate)}>Viagens</ButtonStyled>
+          <ButtonStyled onClick={() => goToLogin(navigate)}>Área do Administrador</ButtonStyled>
+        </MainHome>
+      </CardHome>
     </HomeBody>
   )
 }

@@ -6,9 +6,12 @@ import { LoginPage } from '../LoginPage'
 import { TripDetailsPage } from '../TripDetailsPage'
 import { CriateTripPage } from '../CriateTripPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import  GlobalStyle  from '../GlobalStyle';
+
 export const Router = () => {
   return (
         <BrowserRouter>
+          <GlobalStyle/> 
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
@@ -17,6 +20,7 @@ export const Router = () => {
           <Route path="admin/trips/create" element={<CriateTripPage />} />
           <Route path="trips/list" element={ <ListTripsPage />} />
           <Route path="admin/trips/:id" element={<TripDetailsPage />} /> 
+          
         </Routes>
       </BrowserRouter>
     
