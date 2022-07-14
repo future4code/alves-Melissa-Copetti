@@ -26,4 +26,6 @@ export const goBack = (navigate) => {
     navigate(-1)
 }
 
-
+export const goToTripDetails = (navigate) => {
+    navigate ("admin/trips/:id")
+}
