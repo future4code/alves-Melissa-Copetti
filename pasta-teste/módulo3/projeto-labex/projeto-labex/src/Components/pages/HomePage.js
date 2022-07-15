@@ -48,6 +48,21 @@ border: 3px solid #c5d9ed;
 font-size:20px;
 margin-left:30px;
 margin-right:30px;
+cursor: pointer;
+&:hover {
+  background-color:dodgerblue;
+  box-shadow:inset 0 0 10px 10px #696969;
+   
+
+  }
+  &:active {
+    box-shadow: 0 0 10px #fff,
+               0 0 20px #fff, 
+               0 0 40px #fff, 
+               0 0 80px #fff, 
+              0 0 100px #fff;
+ 
+  }
 `
 const Title = styled.h1`
 color:#c5d9ed;

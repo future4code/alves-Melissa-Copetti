@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Ovni from './Imagens/Ovni.jpg'
 
 
-const HomeBody = styled.body`
+const AplicationBody = styled.body`
   max-width: 100%;
   max-height:100%;
   height:730px;
@@ -17,15 +17,15 @@ const HomeBody = styled.body`
   `
 
 
-const MainHome = styled.main`
+const MainAplication = styled.main`
    display:inline-flex;
    background: inherit;
    width: 700px;
-   height: 450px;
+   height: 440px;
    flex-direction:column;
    align-items: center;
   border:black 5px solid;
-  padding: 5px 100px 5px 100px;
+  padding: 5px 80px 5px 80px;
   backdrop-filter: blur(10px);
   border-radius:30px;
   
@@ -48,6 +48,21 @@ const ButtonStyled = styled.button`
   font-size:20px;
   margin-left:30px;
   margin-right:30px;
+  cursor:pointer;
+  &:hover {
+  background-color:dodgerblue;
+  box-shadow:inset 0 0 10px 10px #696969;
+   
+
+  }
+  &:active {
+    box-shadow: 0 0 10px #fff,
+               0 0 20px #fff, 
+               0 0 40px #fff, 
+               0 0 80px #fff, 
+              0 0 100px #fff;
+ 
+  }
   `
 const Title = styled.h1`
   color:silver;
@@ -85,7 +100,7 @@ export const ApplicationFormPage = () => {
 
   return (
     <div>
-      <HomeBody>
+      <AplicationBody>
         <HeaderStyled>
           <ButtonStyled onClick={() => goBack(navigate)}>Voltar</ButtonStyled>
         <Title>Inscrever-se para uma viagem interplanetária!</Title>
@@ -93,7 +108,7 @@ export const ApplicationFormPage = () => {
          <ButtonStyled >Enviar</ButtonStyled>
          </HeaderStyled>
         <CardHome>
-          <MainHome>
+          <MainAplication>
 
 
 
@@ -134,9 +149,9 @@ export const ApplicationFormPage = () => {
               />
             </form>
 
-          </MainHome>
+          </MainAplication>
         </CardHome>
-      </HomeBody>
+      </AplicationBody>
     </div>
   )
 }

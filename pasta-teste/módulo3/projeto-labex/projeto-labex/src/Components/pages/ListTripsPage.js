@@ -35,9 +35,24 @@ border: 3px solid #c5d9ed;
 font-size:20px;
 margin-left:30px;
 margin-right:30px;
-margin-top:100px;
+margin-top:50px;
 font-family: 'Chakra Petch', sans-serif;
+cursor: pointer;
+&:hover {
+  background-color:dodgerblue;
+  box-shadow:inset 0 0 10px 10px #696969;
+   
 
+  }
+  &:active {
+    box-shadow: 0 0 10px #fff,
+               0 0 20px #fff, 
+               0 0 40px #fff, 
+               0 0 80px #fff, 
+              0 0 100px #fff;
+ 
+  }
+  
 `
 const HeaderStyled = styled.header`
 backdrop-filter: blur(6px);

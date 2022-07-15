@@ -22,7 +22,7 @@ border-radius:30px;
 const LoginBody = styled.body`
 max-width: 100%;
 max-height:100%;
-height:738px;
+height:730px;
 background-image:url(${Planeta});
 background-repeat:no-repeat;
 margin:0;
@@ -45,6 +45,21 @@ padding:10px;
 border-radius:10px;
 border: 3px solid #c5d9ed;
 font-size:20px;
+cursor: pointer;
+&:hover {
+  background-color:dodgerblue;
+  box-shadow:inset 0 0 10px 10px #696969;
+   
+
+  }
+  &:active {
+    box-shadow: 0 0 10px #fff,
+               0 0 20px #fff, 
+               0 0 40px #fff, 
+               0 0 80px #fff, 
+              0 0 100px #fff;
+ 
+  }
 `
 const Title = styled.h1`
 color:#c5d9ed;
