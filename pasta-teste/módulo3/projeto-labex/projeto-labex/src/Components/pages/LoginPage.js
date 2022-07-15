@@ -3,59 +3,137 @@ import { useNavigate } from 'react-router-dom';
 import { goBack, goToAdminHome } from './Routes/Coordinator';
 import { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import Planeta from './Imagens/Planeta.jpg'
+
+const MainLogin = styled.main`
+ display:inline-flex;
+ background: inherit;
+ width: 250px;
+ height: 350px;
+ flex-direction:column;
+ align-items: center;
+border:black 5px solid;
+padding: 5px 100px 5px 100px;
+backdrop-filter: blur(6px);
+border-radius:30px;
+
+ `
+const LoginBody = styled.body`
+max-width: 100%;
+max-height:100%;
+height:738px;
+background-image:url(${Planeta});
+background-repeat:no-repeat;
+margin:0;
+background-attachment: fixed;
+ background-size: cover;
+`
+
+const DivCard = styled.div`
+display:flex;
+justify-content: center;
+align-items:center;
+padding-top:150px;
+
+`
+const ButtonStyled = styled.button`
+margin:10px;
+background-color:#043959;
+color:#c5d9ed;
+padding:10px;
+border-radius:10px;
+border: 3px solid #c5d9ed;
+font-size:20px;
+`
+const Title = styled.h1`
+color:#c5d9ed;
+font-size:50px;
+font-family: 'Chakra Petch', sans-serif;
+
+`
+
+const ImputStyled = styled.input`
+  display:flex;
+  width:300px;
+  margin:20px 5px 0px 10px;
+  padding:15px;
+  background:rgba(0,0,0,0.2);
+  color:#fff;
+  border:0;
+  outline:none;
+  font-size: 20px;
+`
+const ButtonBox = styled.div`
+display: inline-flex;
+margin-top:50px;
+justify-content:space-around;
+`
+
 
 export const LoginPage = () => {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const [form, setForm] = useState({email:"", password:""})
+const navigate = useNavigate();
 
-  const navigate = useNavigate();
 
-  const onChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
+const onChange = (event) => {
+  const {name,value} = event.target
+  setForm({...form, [name]:value})
+}
 
-  const onChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
 
-  const onSubmitLogin = () => {
-    console.log(email, password);
-    const body = {
-      email: email,
-      password: password
-    };
+  const onSubmitLogin = (event) => {
+    event.preventDefault()
+    console.log(form)
     axios
-    .post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/copetti/login', body)
-    .then((resposta) => {
-      console.log("deu certo!",resposta.data.token);
-      localStorage.setItem("token", resposta.data.token);
-      navigate.push(goToAdminHome)
-    
-    }).catch((erro) => {
-      console.log(erro)
-    })
+      .post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/copetti/login',form)
+      .then((resposta) => {
+        console.log("deu certo!",resposta);
+        localStorage.setItem("token", resposta.data.token);
+        goToAdminHome(navigate)
+
+      }).catch((erro) => {
+        console.log(erro.response)
+      })
   }
 
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input
-        placeholder="email"
-        type="email"
-        value={email}
-        onChange={onChangeEmail}
-      />
-      <input
-        placeholder="senha"
-        type="password"
-        value={password}
-        onChange={onChangePassword}
-      />
-      <button onClick={() => goBack(navigate)} >Voltar</button>
-      <button onClick={onSubmitLogin} >Entrar</button>
-
-    </div>
+    <LoginBody>
+      <DivCard>
+        <form onSubmit={onSubmitLogin}>
+        <MainLogin>
+          <Title>Login</Title>
+        
+          <ImputStyled
+          name='email'
+            placeholder="email"
+            type="email"
+            value={form.email}
+            onChange={onChange}
+            required
+            pattern={'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'}
+            title={'Digite um e-mail válido'}
+          
+          />
+          <ImputStyled
+          name='password'
+            placeholder="senha"
+            type="password"
+            value={form.password}
+            onChange={onChange}
+            required
+            pattern={'^.{6,}$'}
+            title={'sua senha deve ter no mínimo 6 caracteres'}
+          />
+          <ButtonBox>
+            <ButtonStyled onClick={() => goBack(navigate)} >Voltar</ButtonStyled>
+            <ButtonStyled  >Entrar</ButtonStyled>
+          </ButtonBox>
+        </MainLogin>
+        </form>
+      </DivCard>
+    </LoginBody>
   )
 }

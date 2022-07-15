@@ -1,8 +1,55 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { goToHomePage, goToCriateTripPage, goToLogin, goToTripDetails } from './Routes/Coordinator';
+import { goToHomePage, goToCriateTripPage, goToLogin } from './Routes/Coordinator';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import Ceu from './Imagens/Ceu.jpg'
+
+const HomeBody = styled.body`
+max-width: 100%;
+max-height:100%;
+height:730px;
+background-image:url(${Ceu});
+background-repeat:no-repeat;
+margin:0;
+background-attachment: fixed;
+ background-size: cover;
+`
+const Title = styled.h1`
+color:#c5d9ed;
+font-size:70px;
+font-family: 'Chakra Petch', sans-serif;
+text-shadow: 0.1em 0.1em 0.2em black;
+
+`
+const ButtonStyled = styled.button`
+margin:10px;
+background-color:#043959;
+color:#c5d9ed;
+padding:10px;
+border-radius:10px;
+border: 3px solid #c5d9ed;
+font-size:20px;
+margin-left:30px;
+margin-right:30px;
+margin-top:100px;
+font-family: 'Chakra Petch', sans-serif;
+
+`
+const HeaderStyled = styled.header`
+backdrop-filter: blur(6px);
+border-bottom:black 5px solid;
+display:flex;
+flex-direction:row;
+align-items: center;
+justify-content:space-between;
+padding-bottom:3%;
+padding-top:3%;
+`
+
+
+
 
 const useProtectedPage = () => {
   const navigate = useNavigate ();
@@ -43,23 +90,26 @@ export const AdminHomePage = () => {
 
 
 
-  const listTrip = trip.map((viagens)=>{
-    return <div
-    key={viagens.id}
-    onClick={()=>goToTripDetails(navigate, viagens.id)}>
-      {viagens.name}</div>
-  })
+  // const listTrip = trip.map((viagens)=>{
+  //   return <div
+  //   key={viagens.id}
+  //   onClick={()=>goToTripDetails(navigate, viagens.id)}>
+  //     {viagens.name}</div>
+  // })
 
 
 
   return (
     <div>
-      <h1>Painel Administrativo</h1>
-      
-      <button onClick={()=>goToHomePage(navigate)}>Voltar</button>
-      <button onClick={()=>goToCriateTripPage(navigate)} >Criar Viagem</button>
-      <button onClick={()=>goToHomePage(navigate)}>Logout</button>
-   {listTrip} 
+<HomeBody>
+  <HeaderStyled>   
+    <ButtonStyled onClick={()=>goToHomePage(navigate)}>Voltar</ButtonStyled>
+      <Title>Painel Administrativo</Title>
+      <ButtonStyled onClick={()=>goToCriateTripPage(navigate)} >Criar Viagem</ButtonStyled>
+      <ButtonStyled onClick={()=>goToHomePage(navigate)}>Logout</ButtonStyled>
+      </HeaderStyled>
+   </HomeBody>
+   {/* {listTrip}  */}
    </div>
   )
 }
