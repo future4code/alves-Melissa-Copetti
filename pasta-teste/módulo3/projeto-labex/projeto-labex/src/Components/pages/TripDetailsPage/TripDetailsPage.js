@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { goBack, goToLogin } from './Routes/Coordinator'
+import { goBack, goToLogin } from '../../../Routes/Coordinator'
 
 const useProtectedPage = () => {
   const navigate = useNavigate ();
@@ -22,12 +22,12 @@ export const TripDetailsPage = () => {
 useProtectedPage();
 const navigate = useNavigate();
 const [id, setId] = useState();
-const params = useParams();
 
   useEffect(()=>{
 const token = localStorage.getItem("token");
 axios
-.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/copetti/trip/${id}`, {
+.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/copetti/trip/${id}
+`, {
   headers: {
     auth:token
   }

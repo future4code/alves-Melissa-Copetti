@@ -1,12 +1,12 @@
-import { HomePage } from '../HomePage';
-import { AdminHomePage } from '../AdminHomePage'
-import { ApplicationFormPage } from '../ApplicationFormPage'
-import { ListTripsPage } from '../ListTripsPage';
-import { LoginPage } from '../LoginPage'
-import { TripDetailsPage } from '../TripDetailsPage'
-import { CriateTripPage } from '../CriateTripPage'
+import { HomePage } from '../Components/pages/HomePage/HomePage';
+import { AdminHomePage } from '../Components/pages/AdminHomePage/AdminHomePage'
+import { ApplicationFormPage } from '../Components/pages/ApplicationFormPage/ApplicationFormPage'
+import { ListTripsPage } from '../Components/pages/ListtTripsPage/ListTripsPage';
+import { LoginPage } from '../Components/pages/LoginPage/LoginPage'
+import { TripDetailsPage } from '../Components/pages/TripDetailsPage/TripDetailsPage'
+import { CriateTripPage } from '../Components/pages/CreateTripPage/CriateTripPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import  GlobalStyle  from '../GlobalStyle';
+import  GlobalStyle  from './GlobalStyle';
 
 export const Router = () => {
   return (

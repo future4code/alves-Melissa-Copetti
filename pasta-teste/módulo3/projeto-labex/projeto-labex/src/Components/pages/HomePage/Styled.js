@@ -1,11 +1,8 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { goToLogin, goToListTripPage } from './Routes/Coordinator';
 import styled from 'styled-components';
-import Disco from './Imagens/Disco.jpg';
+import Disco from '../Imagens/Disco.jpg';
 
 
-const HomeBody = styled.body`
+export const HomeBody = styled.body`
 max-width: 100%;
 max-height:100%;
 height:730px;
@@ -17,7 +14,7 @@ background-attachment: fixed;
 `
 
 
-const MainHome = styled.main`
+export const MainHome = styled.main`
  display:inline-flex;
  background: inherit;
  width: 250px;
@@ -31,14 +28,14 @@ border-radius:30px;
 
 `
 
-const CardHome = styled.div`
+export const CardHome = styled.div`
 display:flex;
 justify-content: center;
 align-items:center;
 padding-top:150px;
 
 `
-const ButtonStyled = styled.button`
+export const ButtonStyled = styled.button`
 margin:10px;
 background-color:#043959;
 color:#c5d9ed;
@@ -64,36 +61,16 @@ cursor: pointer;
  
   }
 `
-const Title = styled.h1`
+export const Title = styled.h1`
 color:#c5d9ed;
 font-family: 'Chakra Petch', sans-serif;
 font-size:70px;
 margin-top:50px;
 `
-const ButtonBox = styled.div`
+export const ButtonBox = styled.div`
 display: flex;
 align-items:column;
 margin-top:50px;
 font-family: 'Chakra Petch', sans-serif;
 
 `
-
-export const HomePage = () => {
-  const navigate = useNavigate()
-
-
-  return (
-    <HomeBody>
-      <CardHome>
-        <MainHome>
-          <Title>LabeX</Title>
-          <br />
-          <ButtonBox>
-          <ButtonStyled onClick={() => goToListTripPage(navigate)}>Viagens</ButtonStyled>
-          <ButtonStyled onClick={() => goToLogin(navigate)}>Área do Administrador</ButtonStyled>
-          </ButtonBox>
-        </MainHome>
-      </CardHome>
-    </HomeBody>
-  )
-}
