@@ -15,7 +15,7 @@ export const goToSingUpPage= (navigate) => {
 }
 
 export const goToRecipesDetail = (navigate) => {
-    navigate("/details")
+    navigate("/details/id")
 }
 
 export const goBack = (navigate) => {
