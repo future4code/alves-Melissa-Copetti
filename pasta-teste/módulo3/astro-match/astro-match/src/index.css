@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima&family=Fredoka+One&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+body {
+  margin: 0;
+ display: flex;
+ justify-content: center;
+align-items:center;
+background-color:#e4cab1;
+}
+
+
+h1{
+  font-size: 30px;
+  font-family: 'Fredoka One', cursive;
+ color: rgb(209, 10, 10);
+}
+
+button{
+  background-color: transparent;
+  border: none;
+}
+
+
+p{
+  color:black;
+  font-family: 'Arima', cursive;
+font-size: large;
+}
+
+footer{
+  margin-top:0;
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
