@@ -7,11 +7,13 @@ import {RecipesList} from "../Pages/RecipesList/RecipesList";
 import {GlobalStyle} from './GlobalStyle';
 import {ErrorPage} from '../Pages/ErrorPage/ErrorPage';
 import {Routes, Route, BrowserRouter} from "react-router-dom"
+import { Header } from '../Components/Header/Header';
 
 export const Router = () => {
   return (
     <BrowserRouter>
     <GlobalStyle/>
+    <Header/>
     <Routes>
          <Route index element = {<RecipesList/>}/>
          <Route path="login" element = {<LoginPage/>}/>
