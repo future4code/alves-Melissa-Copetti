@@ -5,19 +5,17 @@ import Button from '@material-ui/core/Button'
 import {LoginForm} from './LoginForm'
 import { useNavigate } from 'react-router-dom'
 import { goToSingUpPage } from '../../Router/Cordinator'
-import axios from 'axios'
-import {BASE_URL} from '../../Constants/Urls'
+import { UseUnProtectedPage } from '../../Hooks/useUnprotectedPage'
 
-const login = () => {
-  axios.post(`${BASE_URL}/user/login`)  
-}
-export const LoginPage = () => {
+
+export const LoginPage = ({rightButtonText, setRightButtonText}) => {
+  UseUnProtectedPage()
   const navigate = useNavigate()
   
   return (
     <ScreenContainer>
       <LogoImg src={Logo}/>
-     <LoginForm/>
+     <LoginForm rightButtonText={rightButtonText} setRightButtonText={setRightButtonText}/>
      <SignUpButtonContainer>
       <Button
       onClick={()=>goToSingUpPage(navigate)}

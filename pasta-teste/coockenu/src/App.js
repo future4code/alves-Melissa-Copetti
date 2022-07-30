@@ -12,6 +12,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+      <GlobalStyle/>
       <Header rightButtonText={rightButtonText} setRightButtonText={setRightButtonText}/>
       <Router setRightButtonText= {setRightButtonText}/>
       </BrowserRouter>

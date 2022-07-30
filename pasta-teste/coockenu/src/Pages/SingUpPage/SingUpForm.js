@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import useForm from '../../Hooks/UseForm'
 import { SignUpButtonContainer } from '../LoginPage/Styled'
 import { goToLogin } from '../../Router/Cordinator'
+import { SignUp } from '../../Service/User'
 
 
 export const SingUpForm = () => {
@@ -13,7 +14,7 @@ export const SingUpForm = () => {
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        console.log(form)
+        SignUp(form,clear,navigate)
     }
 
    

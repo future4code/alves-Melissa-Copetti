@@ -4,16 +4,15 @@ import {LoginPage} from "../Pages/LoginPage/LoginPage";
 import {SingUpPage} from "../Pages/SingUpPage/SingUpPage";
 import {RecipesDetail} from "../Pages/RecipesDetail/RecipesDetail";
 import {RecipesList} from "../Pages/RecipesList/RecipesList";
-import {GlobalStyle} from './GlobalStyle';
 import {ErrorPage} from '../Pages/ErrorPage/ErrorPage';
-import {Routes, Route, BrowserRouter} from "react-router-dom"
-import { Header } from '../Components/Header/Header';
+import {Routes, Route} from "react-router-dom"
 
-export const Router = () => {
+
+export const Router = ({rightButtonText, setRightButtonText}) => {
   return (
-    <BrowserRouter>
-    <GlobalStyle/>
-    <Header/>
+    
+    
+   
     <Routes>
          <Route index element = {<RecipesList/>}/>
          <Route path="login" element = {<LoginPage/>}/>
@@ -22,7 +21,7 @@ export const Router = () => {
         <Route path="addrecipes" element = {<AddRecipesPage/>}/>
         <Route path="error" element = {<ErrorPage/>}/>
     </Routes>
-    </BrowserRouter>
+   
   )
 }
 
