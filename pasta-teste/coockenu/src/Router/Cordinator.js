@@ -1,27 +1,27 @@
 export const goToLogin = (navigate) => {
-    navigate("login")
-}
+  navigate("login");
+};
 
 export const goToAddRecipesPage = (navigate) => {
-    navigate("/addrecipes")
-}
+  navigate("/addrecipes");
+};
 
 export const goToRecipesList = (navigate) => {
-    navigate("/")
-}
+  navigate("/");
+};
 
-export const goToSingUpPage= (navigate) => {
-    navigate("/singup")
-}
+export const goToSingUpPage = (navigate) => {
+  navigate("/singup");
+};
 
 export const goToRecipesDetail = (navigate) => {
-    navigate("/details/id")
-}
+  navigate("/details/id");
+};
 
 export const goBack = (navigate) => {
-    navigate(-1)
-}
+  navigate(-1);
+};
 
 export const goToError = (navigate) => {
-    navigate("")
-}
+  navigate("");
+};

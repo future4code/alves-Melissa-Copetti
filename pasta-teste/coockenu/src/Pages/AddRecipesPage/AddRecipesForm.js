@@ -1,66 +1,66 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useNavigate } from "react-router-dom";
 import useForm from "../../Hooks/UseForm";
-import { SignUp } from "../../Service/User";
-import { InputsContainer, SignUpButtonContainer } from "../LoginPage/Styled";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { AddRecipeFormContainer, InputsContainer } from "./Styled";
+import { createRecipe } from "../../Service/recipe";
+import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
-export const SingUpForm = ({ setRightButtonText }) => {
-  const navigate = useNavigate();
+export const AddRecipesForm = () => {
   const [form, onChange, clear] = useForm({
-    name: "",
-    password: "",
-    email: "",
+    title: "",
+    description: "",
+    image: "",
   });
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    SignUp(form, clear, navigate, setRightButtonText, setIsLoading);
+    createRecipe(form, clear, setIsLoading);
   };
-
   return (
     <form onSubmit={onSubmitForm}>
-      <SignUpButtonContainer>
+      <AddRecipeFormContainer>
         <InputsContainer>
           <TextField
-            value={form.name}
-            name={"name"}
+            name={"title"}
+            value={form.title}
             onChange={onChange}
-            label={"Nome"}
+            label={"Título"}
             variant={"outlined"}
             fullWidth
             required
-            autoFocus
+            autoFocul
+            margin={"normal"}
+          />
+
+          <TextField
+            name={"description"}
+            value={form.description}
+            onChange={onChange}
+            label={"Descrição"}
+            variant={"outlined"}
+            fullWidth
+            required
+            autoFocul
             margin={"normal"}
           />
           <TextField
-            value={form.email}
-            name={"email"}
+            name={"image"}
+            value={form.image}
             onChange={onChange}
-            label={"E-mail"}
+            label={"Foto"}
             variant={"outlined"}
-            type={"email"}
             fullWidth
             required
+            autoFocul
             margin={"normal"}
-          />
-          <TextField
-            value={form.password}
-            name={"password"}
-            label={"Senha"}
-            variant={"outlined"}
-            onChange={onChange}
-            fullWidth
-            required
-            margin={"normal"}
-            type={"password"}
           />
         </InputsContainer>
         <Button
-          color={"primary"}
+          color={"prymaryColor"}
           variant={"contained"}
           type={"submit"}
           fullWidth
@@ -68,10 +68,10 @@ export const SingUpForm = ({ setRightButtonText }) => {
           {isLoading ? (
             <CircularProgress color={"inherit"} size={24} />
           ) : (
-            <> Fazer Cadastro</>
+            <p>Adicionar Receita</p>
           )}
         </Button>
-      </SignUpButtonContainer>
+      </AddRecipeFormContainer>
     </form>
   );
 };

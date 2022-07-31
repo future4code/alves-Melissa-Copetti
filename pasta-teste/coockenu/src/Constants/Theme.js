@@ -1,23 +1,16 @@
-import { createTheme } from '@material-ui/core/styles';
-import { neutralColor, primaryColor } from './Colors';
-
+import { createTheme } from "@material-ui/core/styles";
+import { neutralColor, primaryColor } from "./Colors";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: primaryColor,
-      contrastText:'white'
+      contrastText: "white",
     },
     secondary: {
-      main:neutralColor,
+      main: neutralColor,
     },
   },
 });
 
-export default theme
-
-
-
-
-  
-   
+export default theme;
