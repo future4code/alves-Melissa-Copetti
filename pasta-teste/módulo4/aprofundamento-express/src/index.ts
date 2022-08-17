@@ -6,9 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.listen(3003, () => {
-    console.log("Server is running in http://localhost:3003")
-});
+
 
 app.get('/test/hello', (req: Request, res: Response) => {
         res.send(`Olá, mundo!`)})
@@ -130,39 +128,92 @@ let afazeres: Afazer[] = [{
 ]
 
 // exercício 4
-app.get("/done",(req:Request, res:Response)=>{
-const concluidas = afazeres.filter((tarefa)=>{
-    return tarefa.competed === true
+app.get("/done/:isCompleted",(req:Request, res:Response)=>{
+let concluidas:boolean | string  = req.params.isCompleted
+
+ if(concluidas === "true" ){
+   return concluidas = true
+ } else if (concluidas === "false" ){
+   return concluidas = false
+ }else {
+   res.status(400).send("Parâmetro deve ser true ou false")
+ }
+ const filtraAfazeres = afazeres.filter((afazer)=>{
+    return afazer.competed === concluidas
+   })
+   res.status(200).send(filtraAfazeres)
 })
-res.send(concluidas)
-})
+
 
 // exercício 5
 
 
 
 app.post("/create",(req:Request, res:Response)=>{
-const {title, competed} = req.body
-const userId = Number(req.headers.authorization)
+const {title, userId} = req.body
+if(!userId || !title) {
+   res.status(400).send("é preciso passar os parâmetros de userId e title")
+}
 
-afazeres.push({
-    userId:userId,
+const newAfazer: Afazer = {
+   userId,
     id: Date.now(),
-    title: title,
-    competed: competed
-})
-res.send({afazeres})
+    title,
+    competed: false
+}
+
+afazeres.push(newAfazer)
+
+res.status(201).send(afazeres)
 })
 
 
 //exercício 6
 
-app.put("/changedone/:id",(req:Request, res:Response)=>{
+app.put("/changedone/:id/completed",(req:Request, res:Response)=>{
 const idAfazer = Number(req.params.id)
- afazeres.filter((tarefa)=>{
+ 
+let lista = afazeres.map((tarefa)=>{
 if (tarefa.id === idAfazer) {
-    return tarefa.competed === !tarefa.competed
+    tarefa.competed === !tarefa.competed
 }
+return tarefa
 })
-res.send(afazeres)
+res.status(201).send(lista)
 })
+
+//exercício7
+
+app.delete("/excluir/:id",(req:Request, res:Response)=>{
+const tarefaId =Number (req.headers.id)  
+for (let i = 0; i < afazeres.length; i++) {
+   if (afazeres[i].id === tarefaId){
+      afazeres.splice(i,1)
+   }
+}
+res.status(200).send(afazeres)
+})
+
+//Exercicio 8 e 10
+
+app.get("/user/:id/todos", (req:Request, res:Response)=>{
+   const userId = Number(req.params.id)
+
+   const filterList = afazeres.filter((afazer)=>{
+      return afazer.userId === userId
+   })
+   const outraTarefa = afazeres.filter((tarefa)=>{
+      return tarefa.userId !== userId
+   })
+   const result = {
+      todos: {
+         selectedUser: filterList,
+         others: outraTarefa
+      }
+   }
+   res.status(200).send(result)
+})
+
+app.listen(3003, () => {
+   console.log("Server is running in http://localhost:3003")
+});
