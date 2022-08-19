@@ -1,0 +1,24 @@
+{
+  "name": "lista-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-ex1": "tsc && node ./build/exercicio1.js",
+    "start-ex2": "tsc && node ./build/exercicio2.js",
+    "start-ex3": "tsc && node ./build/exercicio3.js",
+    "start-ex4": "tsc && node ./build/exercicio4.js",
+    "start-ex5": "tsc && node ./build/exercicio5.js",
+    "start-ex6": "tsc && node ./build/exercicio6.js",
+    "start-ex7": "tsc && node ./build/exercicio7.js",
+    "start-ex8": "tsc && node ./build/exercicio8.js",
+    "start-ex9": "tsc && node ./build/exercicio9.js",
+    "start-ex10": "tsc && node ./build/exercicio10.js",
+    "start-ex11": "tsc && node ./build/exercicio11.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
