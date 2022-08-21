@@ -1,6 +1,7 @@
 export type Conta = {
+    id:number,
     name:string,
-    cpf:number,
+    cpf:string,
     dateOfBirth:Date,
     balance:number,
     estatement:Array<Transaction>
