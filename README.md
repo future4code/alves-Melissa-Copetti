@@ -1,32 +1,15 @@
-Boas-vindas!
+# Projeto Portfólio
 
-Esse repositório vai acompanhar vocês até o final do curso, para mantermos a organização, sugerimos que vocês sigam a seguinte estrutura:
+---
 
-```
-.
-├── modulo1
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   └── nome-do-projeto
-|
-├── modulo2
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   └── nome-do-projeto
-|
-├── modulo3
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   ├── nome-da-aula
-│   └── nome-do-projeto
-|
-.
-```
+Projeto desenvolvido em HTML3 e CSS5 com o objetivo de aplicar conhecimentos introdutórios. Foi desenvolvido de forma individual para treinar os métodos de criação de links e troca de paginas.
 
-Uma pasta para cada módulo, dentro delas uma pasta para cada dia de aula colocando o nome da aula e por fim uma pasta para cada projeto de fixação com o nome do projeto. Os nomes de cada aula e projeto estarão especificados nas instruções de git de cada exercício.
+### O que funciona
+- As trocas de páginas e ícones clicáveis.
+
+
+### O que não funciona
+- O link do cabeçalho para direcionamento de projetos é apenas ilustrativo.
+
+### Imagens
+![Captura de tela 2022-08-26 115030](https://user-images.githubusercontent.com/104647493/186932867-977232da-c6d1-4e1e-ab77-4456892dd36d.png)
