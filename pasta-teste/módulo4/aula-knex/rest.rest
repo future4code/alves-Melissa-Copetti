@@ -1,0 +1,23 @@
+POST http://localhost:3003/actor
+Content-Type: application/json
+
+{
+    "name": "Bia",
+    "salary": 80000,
+    "birthDate": "1940-04-16",
+    "gender": "female"
+}
+
+###
+GET http://localhost:3003/actor
+
+###
+PUT http://localhost:3003/actor/1661347498469
+Content-Type: application/json
+
+{
+    "name": "Ana",
+    "salary": 107689,
+    "birthDate": "1990-08-08",
+    "gender": "female"
+}

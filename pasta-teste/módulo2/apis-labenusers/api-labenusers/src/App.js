@@ -1,6 +1,7 @@
 import React from 'react';
-import TelaCadastro from './Components/TelaCadastro';
-import TelaListaUsuarios from './Components/TelaListaUsuarios';
+import TelaCadastro from './Components/Cadastro/TelaCadastro';
+import TelaListaUsuarios from './Components/Usuarios/TelaListaUsuarios';
+
 
 
 export default class App extends React.Component {
