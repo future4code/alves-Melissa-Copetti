@@ -24,4 +24,5 @@ export const CardMatch = styled.div`
 export const LimparMat = styled.img`
 width:30px;
 margin-top:20px;
+cursor:pointer;
 `

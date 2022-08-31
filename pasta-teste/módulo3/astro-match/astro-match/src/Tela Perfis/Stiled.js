@@ -9,8 +9,7 @@ export const ImgCard = styled.img`
 `;
 
 export const QuadroImg = styled.div`
-  /* width: 20vw; */
-  height: 22vw;
+  height: 53vh;
   border-radius: 20px;
   display: flex;
   overflow: hidden;
@@ -25,8 +24,10 @@ export const QuadroImg = styled.div`
 
 export const ImgFundo = styled.img`
   position: absolute;
-  height: 40vh;
-  width: 60vw;
+  height: 100%;
+    width: 100%;
+  height: 90vh;
+  width: 80vw;
   filter: blur(10px);
 `;
 
@@ -84,6 +85,8 @@ export const NameAge = styled.div`
   font-weight: normal;
   display: flex;
   align-self: center;
+  margin-bottom: 1vh;
+  margin-top:2vh;
 `;
 
 
@@ -131,3 +134,4 @@ export const ButtonsCardL = styled.button `
 }
 
 `
+

@@ -3,7 +3,7 @@ import { useState } from "react";
 import TelaMatchs from "./TelaMatchs/TelaMatchs";
 import TelaPerfis from "./Tela Perfis/TelaPerfis";
 import Perfis from "./Components/imagens/matchs.png";
-import { Header, ImgButtonPerfis, ImgMatchs, MainCard, Title } from "./StyledApp";
+import { Header, ImgButtonPerfis, ImgMatchs, MainCard, Title, TooltipCard, TooltipBox, Text  } from "./StyledApp";
 
 function App() {
   const [telaAtual, setTelaAtual] = useState("Tela Perfis");
@@ -29,10 +29,15 @@ function App() {
     <MainCard>
       <Header>
         <Title>astromatch</Title>
+  <TooltipCard>
   
       <ImgButtonPerfis onClick={mudarDeTela}>
           <ImgMatchs src={Perfis}></ImgMatchs>
         </ImgButtonPerfis>
+        <TooltipBox>
+            <Text><b>veja seus matchs</b></Text>
+         </TooltipBox>
+        </TooltipCard>
       </Header>
       {trocaTela()}
     </MainCard>

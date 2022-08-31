@@ -38,7 +38,8 @@ function TelaMatchs(props) {
     );
   });
 
-  return <main>{listaDeMatchs}</main>;
+  return <main>{listaDeMatchs}
+  </main>;
 }
 
 export default TelaMatchs;
