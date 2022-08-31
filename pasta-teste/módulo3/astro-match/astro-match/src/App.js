@@ -30,7 +30,7 @@ function App() {
       <Header>
         <Title>astromatch</Title>
   
-        <ImgButtonPerfis onClick={mudarDeTela}>
+      <ImgButtonPerfis onClick={mudarDeTela}>
           <ImgMatchs src={Perfis}></ImgMatchs>
         </ImgButtonPerfis>
       </Header>

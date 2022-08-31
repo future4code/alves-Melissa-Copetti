@@ -4,9 +4,10 @@ export const MainCard = styled.div`
 margin-top:5vh;
 margin: 5vh;
 border: 1px black;
-width:50vw;
+width:25vw;
+position:relative;
 height: 90vh;
-padding:5px;
+padding:1vw;
 border-radius:20px;
 box-shadow: 10px 10px 10px 10px #696969;
 flex-wrap: wrap;
@@ -29,7 +30,7 @@ cursor: pointer;
 export const Header = styled.header`
 display:grid;
 grid-template-columns: 70% 30%;
-
+margin-bottom:2vh;
 
 `
 export const ImgMatchs = styled.img`

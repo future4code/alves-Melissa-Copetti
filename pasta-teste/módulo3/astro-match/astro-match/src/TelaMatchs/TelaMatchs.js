@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import LimparMatchs from "./LimparMatchs";
+
 import { CardMatch } from "./Styled";
 
 
@@ -32,7 +32,7 @@ function TelaMatchs(props) {
       <CardMatch>
         <img src={match.photo}></img>
         <p>{match.name}</p>
-      <footer>{LimparMatchs}</footer>
+      
       </CardMatch>
       </div>
     );

@@ -10,11 +10,11 @@ export const ImgCard = styled.img`
 
 export const QuadroImg = styled.div`
   /* width: 20vw; */
-  height: 20vw;
+  height: 22vw;
   border-radius: 20px;
   display: flex;
-2000ed4ddddddddddd-====================================9===============9==9=9=9=9=9=9==99=-o  overflow:;
-  position:relative;
+  overflow: hidden;
+    position:relative;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
@@ -25,8 +25,8 @@ export const QuadroImg = styled.div`
 
 export const ImgFundo = styled.img`
   position: absolute;
-  height: 25vh;
-  width: 80vw;
+  height: 40vh;
+  width: 60vw;
   filter: blur(10px);
 `;
 
@@ -62,9 +62,7 @@ export const ButtonsCardD = styled.button`
 &:hover {
  color: var(--btn-color);
  background-color: var(--glow-color);
- box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 2em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
+
 }
 
 &:active {
@@ -78,11 +76,11 @@ export const ButtonBox = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-self: center;
-  margin-top:8vh;
+ 
+ 
 `;
 export const NameAge = styled.div`
   font-size: 25px;
-  margin-bottom: 10px;
   font-weight: normal;
   display: flex;
   align-self: center;
@@ -123,9 +121,7 @@ export const ButtonsCardL = styled.button `
 &:hover {
  color: var(--btn-color);
  background-color: var(--glow-color);
- box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 2em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
+
 }
 
 &:active {
