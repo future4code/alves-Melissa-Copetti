@@ -1,15 +1,12 @@
 import React from "react";
 import axios from "axios";
-import TelaPerfis from "./TelaPerfis";
-import Limpar from "./imagens/Limpar.png";
-import styled from "styled-components";
+import TelaPerfis from "../Tela Perfis/TelaPerfis";
+import Limpar from "../Components/imagens/Limpar.png";
+import { LimparMat } from "./Styled";
+
 
 function Clear() {
 
-const LimparMat = styled.img`
-width:30px;
-margin-top:20px;
-`
 
 
 
