@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LimparMatchs from "../TelaMatchs/LimparMatchs";
+
 import {
   ButtonsCardD,
   ButtonsCardL,
@@ -16,7 +17,7 @@ import Swal from "sweetalert2";
 function TelaPerfis(props) {
   const [profile, setProfile] = useState([]);
   const [matches] = useState([]);
-
+  
   const getProfile = () => {
     axios
       .get(
@@ -47,15 +48,16 @@ function TelaPerfis(props) {
       )
       .then((resposta) => {
         if (resposta.data.isMatch) {
-          Swal.fire({
+         Swal.fire({
             title: "Não foi dessa vez!",
             text: ":(",
             imageUrl:
               "https://media2.giphy.com/media/2CdwFeWTJ2xFK/giphy.gif?cid=ecf05e479j7jp6e9uwpd0mrsi97p101fb9cszgkt8hasudyy&rid=giphy.gif&ct=g",
-            imageWidth: 300,
-            imageHeight: 200,
+            imageWidth: 400,
+            imageHeight: 300,
             imageAlt: "Custom image",
-          });
+          
+          }); 
           console.log(resposta.data);
         } else {
           Swal.fire({
@@ -63,8 +65,9 @@ function TelaPerfis(props) {
             text: "<3",
             imageUrl: "https://c.tenor.com/E6DwOqSl2REAAAAC/beijo-kiss.gif",
             imageWidth: 300,
-            imageHeight: 250,
+            imageHeight: 200,
             imageAlt: "Custom image",
+           
           });
         }
         setProfile(true);
@@ -91,11 +94,12 @@ function TelaPerfis(props) {
         <p>{profile.age}</p>
       </NameAge>
       <p>{profile.bio}</p>
-  
+      
       <ButtonBox>
         <ButtonsCardD onClick={getProfile}>X</ButtonsCardD>
         <ButtonsCardL onClick={() => postMatchs(true)}>❤</ButtonsCardL>
       </ButtonBox>
+    
       <footer>{LimparMatchs}</footer>
       {matches}
     </div>
