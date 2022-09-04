@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
-import selectUsers from "../data/selectUsers";
+import selectProducts from "../data/selectProducts";
 
-export const getAllUsers = async (req:Request, res:Response) =>{
+export const getAllProducts = async (req:Request, res:Response) =>{
     try {
 
-        const allUsers = await selectUsers()
+        const allProducts = await selectProducts()
 
-        if(!allUsers?.length) {
-            throw new Error("Não há usuários cadastrados");
+        if(!allProducts?.length){
+            throw new Error("Não há produtos cadastrados");
             
         }
-
-        res.status(200).send(allUsers)
+        
+        
     } catch (error:any) {
         if (res.statusCode == 200) {
             res.status(500).send(error.message || error.sqlMessage)

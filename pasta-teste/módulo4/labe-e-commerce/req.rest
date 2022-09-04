@@ -1,0 +1,36 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{"name":"Getúlio",
+"email":"Getúlio@gmail.com",
+"password":"333363"}
+
+###
+
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "ventilador",
+    "price": 118.90,
+    "img_url":"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRGWhhheULTofQK9i5vJhEluAESCmYBAZnEAQRCstrkH77ly1IXQqnNDTDMlemEK0mfGUzW9FaCtOj282HSgzPzzMiT4BQLY2zxFBWsmEhJtWUDEfPG9nAJ&usqp=CAE"
+}
+
+###
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/products
+
+###
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "userId":"1662247543529",
+    "productId":"Fri Sep 02 2022 15:10:03 GMT-0300 (Horário Padrão de Brasília)",
+    "quantity":23
+}
+
+###
+GET http://localhost:3003/users/1662247500987/purchases

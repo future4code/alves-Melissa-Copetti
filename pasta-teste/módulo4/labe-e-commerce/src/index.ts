@@ -1,31 +1,21 @@
 import { app } from "./app";
+import { createProduct } from "./endpoits/createProduct";
+import { createUsers } from "./endpoits/createUsers";
+import { getAllProducts } from "./endpoits/getAllProducts";
+import { getAllUsers } from "./endpoits/getAllUsers";
+import { getPurchasesByUser } from "./endpoits/getPurchasesByUser";
+import registerPurchases from "./endpoits/registerPurchases";
 
-app.post("/users", createUsers);
 
 app.get("/users",getAllUsers);
 
+app.get("/users/:userId/purchases",getPurchasesByUser )
+
+app.get("/products", getAllProducts);
+
+app.post("/users", createUsers);
+
+app.post("/purchases", registerPurchases);
+
 app.post("/products",createProduct);
 
-app.get("/products", )
-
-// - **express:**
-//     - **método**: **`post`**
-//     - **path: `/users`**
-//     - `**id`** deve ser gerado pela própria aplicação em código
-//     - **parâmetros recebidos** via **`body`:**
-//         - `**name**`, `**email**` e `**password**`
-
-// - **método: `get`**
-// - **path: `/users`**
-// - **sem parâmetros**
-// - deve trazer uma lista com **todos os** **usuários** cadastrados no banco
-
-// - **express**:
-//     - **método: `post`**
-//     - **path**: `**/products**`
-//     - `**id`** deve ser gerado pela própria aplicação em código
-//     - **parâmetros recebidos** via **`body`**:
-//         - `**name**`, **`price`** e **`image_url`**
-//             - **`image_url`** é a ***url*** da imagem do produto
-//             - exemplo de uma **`image_url`**:
-//                 - [https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ](https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ)
