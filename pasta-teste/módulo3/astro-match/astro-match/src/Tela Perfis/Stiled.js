@@ -26,8 +26,8 @@ export const ImgFundo = styled.img`
   position: absolute;
   height: 100%;
     width: 100%;
-  height: 90vh;
-  width: 80vw;
+  height: 100vh;
+  width: 100vw;
   filter: blur(10px);
 `;
 

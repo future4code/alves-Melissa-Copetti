@@ -34,7 +34,8 @@ function App() {
           <ImgMatchs src={Perfis}></ImgMatchs>
         </ImgButtonPerfis>
         <TooltipBox>
-            <Text><b>veja seus matchs</b></Text>
+          <Text><b>veja seus matchs</b></Text>
+         
          </TooltipBox>
         </TooltipCard>
       </Header>

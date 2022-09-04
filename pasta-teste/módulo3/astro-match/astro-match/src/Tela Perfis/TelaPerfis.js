@@ -13,6 +13,7 @@ import {
   NameAge,
 } from "./Stiled";
 import Swal from "sweetalert2";
+import { Loader } from "../Components/Loader";
 
 function TelaPerfis(props) {
   const [profile, setProfile] = useState([]);
@@ -81,12 +82,14 @@ function TelaPerfis(props) {
 
   return (
     <div>
+     
       <section>
+         
         <QuadroImg>
           <ImgFundo src={profile.photo}></ImgFundo>
          <ImgCard src={profile.photo}></ImgCard>
         </QuadroImg>
-      </section>
+       </section>
       <NameAge>
         <p>
           <strong>{profile.name},</strong>&nbsp;&nbsp;
@@ -94,7 +97,7 @@ function TelaPerfis(props) {
         <p>{profile.age}</p>
       </NameAge>
       <p>{profile.bio}</p>
-      
+     
       <ButtonBox>
         <ButtonsCardD onClick={getProfile}>X</ButtonsCardD>
         <ButtonsCardL onClick={() => postMatchs(true)}>❤</ButtonsCardL>

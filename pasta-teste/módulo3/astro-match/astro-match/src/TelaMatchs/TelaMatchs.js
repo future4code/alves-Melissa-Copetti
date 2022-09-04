@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 import { CardMatch } from "./Styled";
 
-
 function TelaMatchs(props) {
   const [matchesList, setMatchesList] = useState([]);
 
@@ -29,17 +28,15 @@ function TelaMatchs(props) {
   const listaDeMatchs = matchesList.map((match) => {
     return (
       <div>
-      <CardMatch>
-        <img src={match.photo}></img>
-        <p>{match.name}</p>
-      
-      </CardMatch>
+        <CardMatch>
+          <img src={match.photo}></img>
+          <p>{match.name}</p>
+        </CardMatch>
       </div>
     );
   });
 
-  return <main>{listaDeMatchs}
-  </main>;
+  return <main>{listaDeMatchs}</main>;
 }
 
 export default TelaMatchs;

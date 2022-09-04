@@ -12,7 +12,9 @@ body {
  display: flex;
  justify-content: center;
 align-items:center;
+flex-wrap: wrap;
 background-color:#e4cab1;
+
 }
 
 
