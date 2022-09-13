@@ -1,0 +1,18 @@
+POST  http://localhost:3003/user
+content-type: application/json
+
+
+###
+
+GET http://localhost:3003/user/16617099186180.12043316238858881
+
+
+###
+
+PUT http://localhost:3003/user/edit/16617099186180.12043316238858881
+content-type: application/json
+
+
+###
+POST http://localhost:3003/create/task
+content-type: application/json
