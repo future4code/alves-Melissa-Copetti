@@ -3,7 +3,7 @@ import { User, IUserDB } from "./../models/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
-  public TABLE_USERS = "Arq_Users";
+  public static TABLE_USERS = "Arq_Users";
 
   public toUserDBModel = (user: User) => {
     const userDB: IUserDB = {
@@ -18,7 +18,7 @@ export class UserDatabase extends BaseDatabase {
   public createUser = async (user: User) => {
     const userDB = this.toUserDBModel(user);
 
-    await BaseDatabase.connection(this.TABLE_USERS).insert(userDB);
+    await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(userDB);
     const payload: ITokenPayload = {
       id: user.getId(),
       role: user.getRole(),
@@ -27,7 +27,7 @@ export class UserDatabase extends BaseDatabase {
     const token = authenticator.generateToken(payload);
 
     const response = {
-      token,
+      token
     };
     return response;
   };
