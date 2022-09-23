@@ -6,6 +6,7 @@ import { Authenticator, ITokenPayload } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { ConflictError } from "../Error/ConflictError";
+import { AuthorizationError } from "../Error/AuthorizationError";
 
 export class UserBusiness {
   constructor(
@@ -84,5 +85,35 @@ export class UserBusiness {
     if (!userDB) {
       throw new ConflictError();
     }
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role
+    );
+
+    const isPasswordIsCorrect = await this.hashManager.compare(
+      password,
+      user.getPassword()
+    );
+
+    if (!isPasswordIsCorrect) {
+      throw new AuthorizationError();
+    }
+
+    const payload: ITokenPayload = {
+      id: user.getId(),
+      role: user.getRole(),
+    };
+
+    const token = this.authenticator.generateToken(payload);
+
+    const response = {
+      message: "login realizado com sucesso",
+      token,
+    };
+
+    return response;
   };
 }
