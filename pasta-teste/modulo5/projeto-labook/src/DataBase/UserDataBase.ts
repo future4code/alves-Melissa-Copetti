@@ -1,19 +1,10 @@
 import { IUserDB, User } from "../Models/User";
-import { BaseDatabase } from "./BaseDatabase";
+import { BaseDatabase } from "./BaseDataBase";
 
-export class UserDatabase extends BaseDatabase {
+export class UserDataBase extends BaseDatabase {
   public static TABLE_USERS = "Labook_Users";
-  public findByEmail = async (email: string) => {
-    const usersDB: IUserDB[] = await BaseDatabase.connection(
-      UserDatabase.TABLE_USERS
-    )
-      .select()
-      .where({ email });
 
-    return usersDB[0];
-  };
-
-  public createUser = async (user: User) => {
+  public toUserDBModel = (user: User) => {
     const userDB: IUserDB = {
       id: user.getId(),
       name: user.getName(),
@@ -21,6 +12,20 @@ export class UserDatabase extends BaseDatabase {
       password: user.getPassword(),
       role: user.getRole(),
     };
-    await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(userDB)
+    return userDB;
+  };
+  public findByEmail = async (email: string) => {
+    const result: IUserDB[] = await BaseDatabase.connection(
+      UserDataBase.TABLE_USERS
+    )
+      .select()
+      .where({ email });
+
+    return result[0];
+  };
+
+  public createUser = async (user: User) => {
+    const userDB = this.toUserDBModel(user);
+    await BaseDatabase.connection(UserDataBase.TABLE_USERS).insert(userDB);
   };
 }

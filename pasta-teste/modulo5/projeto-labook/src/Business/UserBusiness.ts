@@ -1,5 +1,5 @@
 import { ILoginInputDTO } from "./../Models/User";
-import { UserDatabase } from "./../DataBase/UserDataBase";
+import { UserDataBase } from "./../DataBase/UserDataBase";
 import { ParamsError } from "../Error/ParamsError";
 import { ISignupInputDTO, User, USER_ROLES } from "../Models/User";
 import { Authenticator, ITokenPayload } from "../services/Authenticator";
@@ -10,7 +10,7 @@ import { AuthorizationError } from "../Error/AuthorizationError";
 
 export class UserBusiness {
   constructor(
-    private userDatabase: UserDatabase,
+    private userDatabase: UserDataBase,
     private idGenerator: IdGenerator,
     private hashManager: HashManager,
     private authenticator: Authenticator

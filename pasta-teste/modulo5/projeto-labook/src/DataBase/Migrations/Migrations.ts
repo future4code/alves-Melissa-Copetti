@@ -3,7 +3,7 @@ import { PostDataBase } from './../PostDataBase';
 
 import { UserDatabase } from "../UserDataBase"
 import { likes, posts, users } from "./Data"
-import { BaseDatabase } from '../BaseDatabase';
+import { BaseDatabase } from '../BaseDataBase';
 
 
 class Migrations extends BaseDatabase {

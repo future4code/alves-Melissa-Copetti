@@ -6,7 +6,7 @@ export interface IPostDB {
 
 export interface ILikeDB {
   id: string;
-  post_id: string,
+  post_id: string;
   user_id: string;
 }
 
@@ -19,27 +19,62 @@ export class Post {
   ) {}
 
   public getId = () => {
-    this.id;
+    return this.id;
   };
   public getContent = () => {
-    this.content;
+    return this.content;
   };
   public getUserId = () => {
-    this.userid;
+   return this.userid;
   };
   public getLikes = () => {
-    this.likes;
+   return this.likes;
   };
   public setId = (newId: string) => {
-    this.id = newId;
+    return this.id = newId;
   };
   public setContent = (newContent: string) => {
-    this.content = newContent;
+    return this.content = newContent;
   };
   public setUserId = (newUserId: string) => {
-    this.userid = newUserId;
+    return this.userid = newUserId;
   };
   public setLikes = (newLikes: number) => {
-    this.likes = newLikes;
+    return this.likes = newLikes;
   };
+}
+
+export interface ICreatePostInputDTO {
+  token: string ;
+  content: string;
+}
+export interface ICreatePostOuputDTO {
+  message: string;
+  post: Post;
+}
+export interface IGetPostInputDTO {
+  token: string;
+}
+export interface IGetPostOuputDTO {
+  posts: Post[];
+}
+export interface IDeletePostInputDTO {
+  message: string;
+}
+export interface IDeletePostOuputDTO {
+  message: string;
+}
+export interface IAddLikeInputDTO {
+  token: string;
+  postId: string;
+}
+export interface IAddLikeOuputDTO {
+  message: string;
+}
+export interface IRemoveLikeInputDTO {
+  token: string;
+  postId: string;
+}
+export interface IRemoveLikeOuputDTO {
+  message: string;
 }
