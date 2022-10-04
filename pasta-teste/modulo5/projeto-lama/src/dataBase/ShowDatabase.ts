@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class ShowDatabase extends BaseDatabase {
   public static TABLE_SHOWS = "Lama_Shows";
 
-  public toUserDBModel = (show: Show): IShowDB => {
+  public toShowDBModel = (show: Show): IShowDB => {
     const showDB: IShowDB = {
       id: show.getId(),
       band: show.getBand(),
@@ -15,19 +15,19 @@ export class ShowDatabase extends BaseDatabase {
     return showDB;
   };
 
-//   public findByEmail = async (email: string): Promise<IUserDB | undefined> => {
-//     const result: IUserDB[] = await BaseDatabase.connection(
-//       UserDatabase.TABLE_USERS
-//     )
-//       .select()
-//       .where({ email });
+  public findByBand = async (band: string): Promise<IShowDB | undefined> => {
+    const result: IShowDB[] = await BaseDatabase.connection(
+      ShowDatabase.TABLE_SHOWS
+    )
+      .select()
+      .where({ band });
 
-//     return result[0];
-//   };
+    return result[0];
+  };
 
-//   public createUser = async (user: User): Promise<void> => {
-//     const userDB = this.toUserDBModel(user);
+  public createShow = async (show: Show): Promise<void> => {
+    const showDB = this.toShowDBModel(show);
 
-//     await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(userDB);
-//   };
+    await BaseDatabase.connection(ShowDatabase.TABLE_SHOWS).insert(showDB);
+  };
 }

@@ -45,3 +45,15 @@ export class Show {
     this.tikets = newTikets;
   };
 }
+
+export interface ISubsbandInputDTO {
+    band:string, 
+    startsAt:Date 
+    
+}
+
+
+export interface ISubsbanpOutputDTO {
+    message: string;
+    token: string;
+  }

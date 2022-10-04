@@ -1,132 +1,54 @@
 import { ShowDatabase } from "../dataBase/ShowDatabase";
-import { Authenticator } from "../services/Authenticator";
+import { ConflictError } from "../errors/ConflictError";
+import { ParamsError } from "../errors/ParamsError";
+import { ISubsbandInputDTO, Show } from "../models/Show";
+import { Authenticator, ITokenPayload } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 
 
 export class ShowBusiness {
   constructor(
-    private userDatabase: ShowDatabase,
+    private showDatabase: ShowDatabase,
     private idGenerator: IdGenerator,
     private authenticator: Authenticator
   ) {}
 
-//   public signup = async (input: ISignupInputDTO): Promise<ISignupOutputDTO> => {
-//     const { name, email, password } = input;
+  private subsband = async (input: ISubsbandInputDTO): Promise<void> => {
+    const { band, startsAt } = input;
 
-//     if (typeof name !== "string") {
-//       throw new ParamsError("Parâmetro 'name' inválido: deve ser uma string");
-//     }
+    if (typeof band !== "string") {
+      throw new ParamsError("Parâmetro 'name' inválido: deve ser uma string");
+    }
 
-//     if (typeof email !== "string") {
-//       throw new ParamsError("Parâmetro 'email' inválido: deve ser uma string");
-//     }
 
-//     if (typeof password !== "string") {
-//       throw new ParamsError(
-//         "Parâmetro 'password' inválido: deve ser uma string"
-//       );
-//     }
+ 
 
-//     if (name.length < 3) {
-//       throw new ParamsError(
-//         "Parâmetro 'name' inválido: mínimo de 3 caracteres"
-//       );
-//     }
+    const isBandAlreadyExists = await this.showDatabase.findByBand(band);
 
-//     if (password.length < 6) {
-//       throw new ParamsError(
-//         "Parâmetro 'password' inválido: mínimo de 6 caracteres"
-//       );
-//     }
+    if (isBandAlreadyExists) {
+      throw new ConflictError("Banda já cadastrada");
+    }
 
-//     if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-//       throw new ParamsError("Parâmetro 'email' inválido");
-//     }
+    const id = this.idGenerator.generate();
+ 
 
-//     const isEmailAlreadyExists = await this.userDatabase.findByEmail(email);
+    const show = new Show();
 
-//     if (isEmailAlreadyExists) {
-//       throw new ConflictError("Email já cadastrado");
-//     }
+    await this.showDatabase.createShow(show);
 
-//     const id = this.idGenerator.generate();
-//     const hashedPassword = await this.hashManager.hash(password);
+    const payload: ITokenPayload = {
+      id: show.getId(),
+      
+    };
 
-//     const user = new User(id, name, email, hashedPassword, USER_ROLES.NORMAL);
+    const token = this.authenticator.generateToken(payload);
 
-//     await this.userDatabase.createUser(user);
+    const response: IsubsBandOutputDto = {
+      message: "Cadastro realizado com sucesso",
+      token,
+    };
 
-//     const payload: ITokenPayload = {
-//       id: user.getId(),
-//       role: user.getRole(),
-//     };
+    return response;
+  };
 
-//     const token = this.authenticator.generateToken(payload);
-
-//     const response: ISignupOutputDTO = {
-//       message: "Cadastro realizado com sucesso",
-//       token,
-//     };
-
-//     return response;
-//   };
-
-//   public login = async (input: ILoginInputDTO): Promise<ILoginOutputDTO> => {
-//     const { email, password } = input;
-
-//     if (typeof email !== "string") {
-//       throw new ParamsError("Parâmetro 'email' inválido");
-//     }
-
-//     if (typeof password !== "string") {
-//       throw new ParamsError("Parâmetro 'password' inválido");
-//     }
-
-//     if (password.length < 6) {
-//       throw new ParamsError(
-//         "Parâmetro 'password' inválido: mínimo de 6 caracteres"
-//       );
-//     }
-
-//     if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-//       throw new ParamsError("Parâmetro 'email' inválido");
-//     }
-
-//     const userDB = await this.userDatabase.findByEmail(email);
-
-//     if (!userDB) {
-//       throw new NotFoundError("Email não cadastrado");
-//     }
-
-//     const user = new User(
-//       userDB.id,
-//       userDB.name,
-//       userDB.email,
-//       userDB.password,
-//       userDB.role
-//     );
-
-//     const isPasswordCorrect = await this.hashManager.compare(
-//       password,
-//       user.getPassword()
-//     );
-
-//     if (!isPasswordCorrect) {
-//       throw new AuthenticationError("Password incorreto");
-//     }
-
-//     const payload: ITokenPayload = {
-//       id: user.getId(),
-//       role: user.getRole(),
-//     };
-
-//     const token = this.authenticator.generateToken(payload);
-
-//     const response: ILoginOutputDTO = {
-//       message: "Login realizado com sucesso",
-//       token,
-//     };
-
-//     return response;
-//   };
-}
+  }
