@@ -1,93 +1,58 @@
-
+import { PizzaDataBase } from "../database/PizzaDataBase";
+import { IGetPizzasOutputDTO, Pizza } from "../models/Pizza";
+import { IdGenerator } from "../services/IdGenerator";
 
 export class PizzaBusiness {
-    constructor(
-        private pizzaDatabase: PizzaDataBase,
-        private idGenerator: IdGenerator,
-   
-    ) {}
+  constructor(
+    private pizzaDatabase: PizzaDataBase,
+    private idGenerator: IdGenerator
+  ) {}
 
-    public getPizzas = async () => {
-       
+  public getPizzas = async (): Promise<IGetPizzasOutputDTO> => {
+    const pizzasDB = await this.pizzaDatabase.getPizzas();
 
- 
+    const pizzas: Pizza[] = [];
 
-        const id = this.idGenerator.generate()
-        const hashedPassword = await this.hashManager.hash(password)
+    for (let pizzaDB of pizzasDB) {
+      const pizza = new Pizza(pizzaDB.name, pizzaDB.price, []);
 
-        
+      const ingredients = await this.pizzaDatabase.getIngredients(pizzaDB.name);
 
-        await this.userDatabase.createUser(user)
-
-        const payload: ITokenPayload = {
-            id: user.getId(),
-            role: user.getRole()
-        }
-
-        const token = this.authenticator.generateToken(payload)
-
-        const response: ISignupOutputDTO = {
-            message: "Cadastro realizado com sucesso",
-            token
-        }
-
-        return response
+      pizza.setIngredients(ingredients);
+      pizzas.push(pizza);
     }
 
-    public login = async (input: ILoginInputDTO) => {
-        const { email, password } = input
+    const response: IGetPizzasOutputDTO = {
+      message: "Pizzas retornadas com sucesso",
+      pizzas: pizzas.map((pizza) => ({
+        name: pizza.getName(),
+        price: pizza.getPrice(),
+        ingredients: pizza.getIngredients(),
+      })),
+    };
+    return response;
+  };
 
-        if (typeof email !== "string") {
-            throw new ParamsError("Parâmetro 'email' inválido")
-        }
+  public getPizzasV2 = async () => {
+    const rawPizzasFormatted = await this.pizzaDatabase.getPizzasFormatted();
 
-        if (typeof password !== "string") {
-            throw new ParamsError("Parâmetro 'password' inválido")
-        }
+    const pizzas: any = [];
 
-        if (password.length < 6) {
-            throw new ParamsError("Parâmetro 'password' inválido: mínimo de 6 caracteres")
-        }
-
-        if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-            throw new ParamsError("Parâmetro 'email' inválido")
-        }
-
-        const userDB = await this.userDatabase.findByEmail(email)
-        
-        if (!userDB) {
-            throw new NotFoundError("Email não cadastrado")
-        }
-
-        const user = new User(
-            userDB.id,
-            userDB.name,
-            userDB.email,
-            userDB.password,
-            userDB.role
-        )
-
-        const isPasswordCorrect = await this.hashManager.compare(
-            password,
-            user.getPassword()
-        )
-
-        if (!isPasswordCorrect) {
-            throw new AuthenticationError("Password incorreto")
-        }
-
-        const payload: ITokenPayload = {
-            id: user.getId(),
-            role: user.getRole()
-        }
-
-        const token = this.authenticator.generateToken(payload)
-
-        const response: ILoginOutputDTO = {
-            message: "Login realizado com sucesso",
-            token
-        }
-
-        return response
+    for (let rawPizza of rawPizzasFormatted) {
+      const pizzaAlreadyOnArray = pizzas.find(
+        (pizza: any) => pizza.name === rawPizza.name
+      );
+      if (pizzaAlreadyOnArray) {
+        pizzaAlreadyOnArray.ingredients.push(rawPizza.ingredient_name);
+      } else {
+        const pizza = {
+          name: rawPizza.name,
+          price: rawPizza.price,
+          ingredients: [rawPizza.ingredient_name],
+        };
+        pizzas.push(pizza);
+      }
     }
+    return { pizzas };
+  };
 }

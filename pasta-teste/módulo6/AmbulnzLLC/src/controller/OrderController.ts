@@ -1,14 +1,18 @@
+import { ICreateOrderInputDTO, ICreateOrderOutputDTO } from "./../models/Order";
 import { Request, Response } from "express";
-import { PizzaBusiness } from "../business/PizzaBusiness";
+import { OrderBusiness } from "../business/OrderBusiness";
 import { BaseError } from "../errors/BaseError";
 
-export class PizzaController {
-  constructor(private pizzaBusiness: PizzaBusiness) {}
+export class OrderController {
+  constructor(private orderBusiness: OrderBusiness) {}
 
-  public getPizzas = async (req: Request, res: Response) => {
+  public createOrder = async (req: Request, res: Response) => {
     try {
-      const response = await this.pizzaBusiness.getPizzas();
-      res.status(200).send(response);
+      const input: ICreateOrderInputDTO = {
+        pizzas: req.body.pizzas,
+      };
+      const response = await this.orderBusiness.createOrder(input);
+      res.status(201).send(response);
     } catch (error) {
       console.log(error);
       if (error instanceof BaseError) {
@@ -17,10 +21,9 @@ export class PizzaController {
       res.status(500).send({ message: "Erro inesperado" });
     }
   };
-
-  public getPizzasV2 = async (req: Request, res: Response) => {
+  public getOrders = async (req: Request, res: Response) => {
     try {
-      const response = await this.pizzaBusiness.getPizzasV2();
+      const response = await this.orderBusiness.getOrders();
       res.status(200).send(response);
     } catch (error) {
       console.log(error);

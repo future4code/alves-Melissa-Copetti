@@ -1,82 +1,79 @@
+export interface IOrdersDB {
+  id: string;
+}
 
+export interface IOrderItensDB {
+  id: string;
+  pizza_name: string;
+  quantity: number;
+  order_id: string;
+}
+
+export interface IOrderItem {
+  id: string;
+  pizza_name: string;
+  price: number;
+  quantity: number;
+  order_id: string;
+}
+
+export interface IOrderResume {
+  id: string;
+  pizzas: {
+    name: string;
+    quantity: number;
+    price: number;
+  }[];
+  total: number;
+}
 export class Order {
-    constructor(
-        private id: string,
-       private prderItens:OrderItem[]
-    ) {}
+  private total: number = 0;
+  constructor(private id: string, private orderItens: IOrderItem[]) {
+    this.total = this.calculateTotal();
+  }
 
-    public getId = () => {
-        return this.id
-    }
+  private calculateTotal = () => {
+    const total = this.orderItens.reduce(
+      (acc, pizza) => acc + pizza.price * pizza.quantity,
+      0
+    );
+    return total;
+  };
+  public getId = () => {
+    return this.id;
+  };
 
+  public getOrderItens = () => {
+    return this.orderItens;
+  };
 
+  public setOrderItens = (newOrderItens: IOrderItem[]) => {
+    this.orderItens = newOrderItens;
+  };
 
-    public getOrderItens = () => {
-        return this.orderItem
-    }
+  public addOrderItem = (newOrderItem: IOrderItem[]) => {
+    this.orderItens = newOrderItem;
+  };
 
-    public getLikes = () => {
-        return this.likes
-    }
-
-    public setId = (newId: string) => {
-        this.id = newId
-    }
-
-    public setContent = (newContent: string) => {
-        this.content = newContent
-    }
-
-    public setUserId = (newUserId: string) => {
-        this.userId = newUserId
-    }
-
-    public setLikes = (newLikes: number) => {
-        this.likes = newLikes
-    }
+  public removeOrderItem = (idToRemove: string) => {
+    return this.orderItens.filter((orderItem) => orderItem.id !== idToRemove);
+  };
+  public getTotal = () => {
+    return this.total
+}
+}
+export interface ICreateOrderInputDTO {
+  pizzas: {
+    name: string;
+    quantity: number;
+  }[];
 }
 
-export interface ICreatePostInputDTO {
-    token: string,
-    content: string
+export interface ICreateOrderOutputDTO {
+  message: string;
+  order: IOrderResume;
 }
 
-export interface ICreatePostOutputDTO {
-    message: string,
-    post: Post
-}
-
-export interface IGetPostsInputDTO {
-    token: string
-}
-
-export interface IGetPostsOutputDTO {
-    posts: Post[]
-}
-
-export interface IDeletePostInputDTO {
-    token: string,
-    postId: string
-}
-
-export interface IDeletePostOutputDTO {
-    message: string
-}
-
-export interface IAddLikeInputDTO {
-    token: string,
-    postId: string
-}
-
-export interface IAddLikeOutputDTO {
-    message: string
-}
-
-export interface IRemoveLikeInputDTO {
-    token: string,
-    postId: string
-}
-
-export interface IRemoveLikeOutputDTO {
-    message: string
+export interface IGetOrdersOutputDTO {
+  orders: IOrderResume[];
 }

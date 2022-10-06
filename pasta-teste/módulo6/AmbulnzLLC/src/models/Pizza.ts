@@ -1,14 +1,15 @@
-export enum USER_ROLES {
-  NORMAL = "NORMAL",
-  ADMIN = "ADMIN",
+export interface IPizzaDB {
+  name: string;
+  price: number;
 }
 
-export interface IUserDB {
-  id: string;
+export interface IIngredientsDB {
   name: string;
-  email: string;
-  password: string;
-  role: USER_ROLES;
+}
+
+export interface IPizzasIngredientsDB {
+  pizza_name: string;
+  ingredient_name: string;
 }
 
 export class Pizza {
@@ -37,5 +38,26 @@ export class Pizza {
   public setPrice = (newPrice: number) => {
     this.price = newPrice;
   };
-}
 
+  public setIngredients = (newIngredients: string[]) => {
+    this.ingredients = newIngredients;
+  };
+
+  public addIngredient = (newIngredient: string) => {
+    this.ingredients.push(newIngredient);
+  };
+
+  public removeIngredient = (ingredientToRemove: string) => {
+    return this.ingredients.filter(
+      (ingredient) => ingredient !== ingredientToRemove
+    );
+  };
+}
+export interface IGetPizzasOutputDTO {
+  message: string;
+  pizzas: {
+    name: string;
+    price: number;
+    ingredients: string[];
+  }[];
+}
