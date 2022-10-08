@@ -10,5 +10,5 @@ const pizzaController = new PizzaController(
   new PizzaBusiness(new PizzaDataBase(), new IdGenerator())
 );
 
-pizzaRouter.get("/", pizzaController.getPizzas);
-pizzaRouter.get("/v2", pizzaController.getPizzasV2);
+pizzaRouter.get("/api/pizza", pizzaController.getPizzas);
+pizzaRouter.get("/api/pizzas/v2", pizzaController.getPizzasV2);

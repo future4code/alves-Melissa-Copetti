@@ -1,5 +1,4 @@
 import {
-
   IGetOrdersOutputDTO,
   Order,
 } from "./../models/Order";
@@ -43,7 +42,9 @@ export class OrderBusiness {
       pizza.price = price;
     }
     const orderId = this.idGenerator.generate();
+
     await this.orderDatabase.createOrder(orderId);
+
     for (let pizza of pizzas) {
       const orderItem: IOrderItensDB = {
         id: this.idGenerator.generate(),
@@ -69,8 +70,11 @@ export class OrderBusiness {
     return response;
   };
   public getOrders = async (): Promise<IGetOrdersOutputDTO> => {
+    
     const ordersDB = await this.orderDatabase.getOrders();
+
     const orders: Order[] = [];
+    
     for (let orderDB of ordersDB) {
       const order = new Order(orderDB.id, []);
       const orderItensDB: any = await this.orderDatabase.getOrderItem(

@@ -31,7 +31,8 @@ export class PizzaDataBase extends BaseDatabase {
   };
   public getPizzasFormatted = async (): Promise<any> => {
     const [result] = await BaseDatabase.connection.raw(
-      `SELECT * FROM Amb_Pizzas JOIN Amb_Pizzas_Ingredients.pozza_name = Amb_Pizzas.name;`
+      `SELECT * FROM Amb_Pizzas
+      JOIN Amb_Pizzas_Ingredients ON Amb_Pizzas_Ingredients.pizza_name = Amb_Pizzas.name;`
     );
     return result;
   };
