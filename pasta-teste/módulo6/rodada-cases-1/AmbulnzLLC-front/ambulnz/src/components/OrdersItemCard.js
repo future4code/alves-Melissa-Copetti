@@ -1,20 +1,23 @@
-import React from 'react'
+import React from "react";
+import { ButtonRemove } from "./Styled";
+
 
 function OrderItemCard(props) {
-    const { pizza } = props
+  const { pizza, removeFromCart } = props;
 
-    return (
-        <div>
-            <p>
-                Pizza {pizza.name}
-                - {pizza.price.toLocaleString(
-                    'pt-br',
-                    { style: 'currency', currency: 'USD' }
-                )}
-              {" "}  x {pizza.quantity}</p>
-            <button onClick={()=>removeFromCart()}>Remover item</button>
-        </div>
-    )
+  return (
+    <div>
+      <p>
+        Pizza {pizza.name}-{" "}
+        {pizza.price.toLocaleString("pt-br", {
+          style: "currency",
+          currency: "USD",
+        })}{" "}
+        x {pizza.quantity}
+      </p>
+      <ButtonRemove onClick={() => removeFromCart()}>Remover item</ButtonRemove>
+    </div>
+  );
 }
 
-export default OrderItemCard
+export default OrderItemCard;

@@ -3,7 +3,7 @@ import { BaseDatabase } from "./BaseDatabase";
 import { PizzaDataBase } from "./PizzaDataBase";
 
 export class OrderDatabase extends BaseDatabase {
-  public static TABLE_ORDER_ITEMS = "Amb_Order_Itens";
+  public static TABLE_ORDER_ITEMS = "Amb_Order_Items";
   public static TABLE_ORDERS = "Amb_Orders";
 
   public createOrder = async (orderId: string): Promise<void> => {

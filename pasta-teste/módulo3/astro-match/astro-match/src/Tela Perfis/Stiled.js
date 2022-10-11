@@ -10,7 +10,7 @@ export const ImgCard = styled.img`
 
 export const QuadroImg = styled.div`
   /* width: 20vw; */
-  height: 22givw;
+  height: 22vw;
   border-radius: 20px;
   display: flex;
   overflow: hidden;

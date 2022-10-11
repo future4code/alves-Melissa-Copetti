@@ -1,6 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../constants"
+import PizzaCard from "../components/PizzaCard"
+import { CardLista } from "../components/Styled"
+
 
 
 
@@ -9,8 +12,9 @@ function PizzasMenu(props) {
 
     const [ pizzas, setPizzas ] = useState([])
 
+  
     useEffect(() => {
-        axios.get(`${BASE_URL}/pizzas`)
+        axios.get(`${BASE_URL}/pizza`)
             .then((res) => {
                 setPizzas(res.data.pizzas)
             })
@@ -21,17 +25,17 @@ function PizzasMenu(props) {
 
     return (
         <div>
-            <ul>
+            <CardLista>
                 {pizzas.map((pizza) => {
                     return (
-                        <div
+                        <PizzaCard
                             key={pizza.name}
                             pizza={pizza}
                             addToCart={addToCart}
                         />
                     )
                 })}
-            </ul>
+            </CardLista>
         </div>
     )
 }

@@ -1,4 +1,6 @@
+
 import OrderItemCard from "../components/OrdersItemCard"
+import { CardButton, CardCart, CardDetails, TextBody, Title } from "../components/Styled"
 
 
 function OrderSummary(props) {
@@ -16,20 +18,24 @@ function OrderSummary(props) {
         )
     }
 
-    return (
-        <div>
-            <h1>Resumo do pedido</h1>
 
+
+    return (
+        <CardCart>
+            <CardDetails>
+            <Title>Resumo do pedido</Title>
+<TextBody>
             {cart.map((pizza) => {
                 return (
                     <OrderItemCard
                     key={pizza.name} pizza={pizza} />
                 )
             })}
-
-            <h2>Total: {calculateTotal()}</h2>
-            <button>Confirmar pedido</button>
-        </div>
+</TextBody>
+            <Title>Total: {calculateTotal()}</Title>
+            </CardDetails>
+            <CardButton>Confirmar pedido</CardButton>
+        </CardCart>
     )
 }
 

@@ -8,7 +8,6 @@ export class PingController {
     ) {}
 
     public ping = async (req: Request, res: Response) => {
-        let errorCode = 400
         try {
             const response = await this.pingBusiness.ping()
             
