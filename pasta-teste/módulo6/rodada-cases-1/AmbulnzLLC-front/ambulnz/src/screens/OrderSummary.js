@@ -4,19 +4,8 @@ import { CardButton, CardCart, CardDetails, TextBody, Title } from "../component
 
 
 function OrderSummary(props) {
-    const { cart } = props
+    const { cart, removeFromCart, total, confirmOrder } = props
 
-    const calculateTotal = () => {
-        const total = cart.reduce(
-            (acc, item) => acc + (item.price * item.quantity),
-            0
-        )
-
-        return total.toLocaleString(
-            'pt-br',
-            { style: 'currency', currency: 'USD' }
-        )
-    }
 
 
 
@@ -28,13 +17,19 @@ function OrderSummary(props) {
             {cart.map((pizza) => {
                 return (
                     <OrderItemCard
-                    key={pizza.name} pizza={pizza} />
+                    key={pizza.name}
+                    pizza={pizza}
+                    removeFromCart={removeFromCart}/>
                 )
             })}
 </TextBody>
-            <Title>Total: {calculateTotal()}</Title>
+            <Title>Total: {
+                    total.toLocaleString(
+                    'pt-br',
+                    { style: 'currency', currency: 'USD' }
+                )}</Title>
             </CardDetails>
-            <CardButton>Confirmar pedido</CardButton>
+            <CardButton onClick={confirmOrder}>Confirmar pedido</CardButton>
         </CardCart>
     )
 }

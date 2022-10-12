@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../constants"
 import PizzaCard from "../components/PizzaCard"
-import { CardLista } from "../components/Styled"
+import { CardLista, TitleH1, TitleMenu } from "../components/Styled"
 
 
 
@@ -25,7 +25,10 @@ function PizzasMenu(props) {
 
     return (
         <div>
+              <TitleMenu
+              ><TitleH1>MENU</TitleH1> </TitleMenu> 
             <CardLista>
+        
                 {pizzas.map((pizza) => {
                     return (
                         <PizzaCard

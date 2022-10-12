@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, CardA, CardLista, Tags, Title } from "./Styled";
+import { Button, CardA, Tags, TicketPrice, Title,  } from "./Styled";
 
 
 const PizzaCard = (props) => {
@@ -8,7 +8,8 @@ const PizzaCard = (props) => {
 
 
   return (
-    <CardLista>
+    <div>
+      
       <CardA>
 <Tags>
           <Title>{pizza.name}</Title>
@@ -16,17 +17,18 @@ const PizzaCard = (props) => {
               return <span key={item}>{`${item} `}</span>;
             })}
 </Tags>
-          <p className="card-price">
+<TicketPrice>
+          <h3>
             {pizza.price.toLocaleString("pt-br", {
               style: "currency",
               currency: "USD",
             })}
-          </p>
-        
+          </h3>
+        </TicketPrice>
           <Button onClick={() => addToCart(pizza)}>
             Adicionar no carrinho
           </Button>
-   </CardA> </CardLista>
+   </CardA> </div>
   );
 };
 
