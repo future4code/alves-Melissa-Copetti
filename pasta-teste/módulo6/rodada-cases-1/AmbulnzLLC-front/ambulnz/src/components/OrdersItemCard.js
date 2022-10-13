@@ -15,7 +15,7 @@ function OrderItemCard(props) {
         })}{" "}
         x {pizza.quantity}
       </p>
-      <ButtonRemove onClick={() => removeFromCart()}>Remover item</ButtonRemove>
+      <ButtonRemove onClick={() => removeFromCart(pizza)}>Remover item</ButtonRemove>
     </div>
   );
 }

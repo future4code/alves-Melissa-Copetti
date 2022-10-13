@@ -56,7 +56,7 @@ function App() {
                   pizza.quantity -= 1
               }
 
-              return pizza
+              return pizzaToRemove
           })
 
           setCart(newCart)
